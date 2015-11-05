@@ -53,3 +53,6 @@ cp config/application.yml.sample config/application.yml
 popd
 }
 prepare_repo
+pushd /app/rosa-build
+puma -p 443 -C config/puma.rb
+popd
