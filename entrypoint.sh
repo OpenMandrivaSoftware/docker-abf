@@ -30,6 +30,8 @@ echo export DATABASE_PASSWORD="$DATABASE_PASSWORD"
 echo export DATABASE_POOL="$DATABASE_POOL" # 5
 echo export DATABASE_TIMEOUT="$DATABASE_TIMEOUT" # 5000
 echo export FILE_STORE_URL="$FILE_STORE_URL"
+echo export PUMA_THREADS="$PUMA_THREADS"
+echo export PUMA_WORKERS="$PUMA_WORKERS"
 echo export ABF_WORKER_PUBLISH_WORKERS_COUNT="$ABF_WORKER_PUBLISH_WORKERS_COUNT"
 echo export ABF_WORKER_LOG_SERVER_HOST="$ABF_WORKER_LOG_SERVER_HOST"
 echo export ABF_WORKER_LOG_SERVER_PORT="$ABF_WORKER_LOG_SERVER_PORT"
@@ -39,12 +41,11 @@ echo export ABF_WORKER_LOG_SERVER_PORT="$ABF_WORKER_LOG_SERVER_PORT"
 #abf_env >> /tmp/env
 prepare_repo(){
 echo "prepare ABF environment vars"
-abf_env >> $HOME/envfile
+abf_env >> /app/envfile
 echo "apply updated /etc/bashrc"
-source $HOME/envfile
+source /app/envfile
 git clone https://github.com/OpenMandrivaSoftware/rosa-build.git -b docker /app/rosa-build
 pushd /app/rosa-build 
-cp Gemfile Gemfile.lock
 gem install bundler
 bundle install --without development test --jobs 20 --retry 5
 echo "update styles"
