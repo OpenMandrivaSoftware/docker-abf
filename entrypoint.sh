@@ -2,6 +2,7 @@
 set -x
 
 abf_env(){
+
 echo export RAILS_ENV="$RAILS_ENV"
 echo export RACK_ENV="$RACK_ENV"
 echo export DEVISE_PEPPER="$DEVISE_PEPPER"
@@ -31,6 +32,24 @@ echo export FILE_STORE_URL="$FILE_STORE_URL"
 echo export ABF_WORKER_PUBLISH_WORKERS_COUNT="$ABF_WORKER_PUBLISH_WORKERS_COUNT"
 echo export ABF_WORKER_LOG_SERVER_HOST="$ABF_WORKER_LOG_SERVER_HOST"
 echo export ABF_WORKER_LOG_SERVER_PORT="$ABF_WORKER_LOG_SERVER_PORT"
+
 }
 
-abf_env >> /tmp/env
+#abf_env >> /tmp/env
+prepare_repo(){
+echo "prepare ABF environment vars"
+abf_env >> $HOME/envfile
+echo "apply updated /etc/bashrc"
+source $HOME/envfile
+git clone https://github.com/OpenMandrivaSoftware/rosa-build.git -b docker /app/rosa-build
+pushd /app/rosa-build 
+cp Gemfile Gemfile.lock
+gem install bundler
+bundle install --without development test --jobs 20 --retry 5
+# Copy the database.yml.
+cp config/database.yml.sample config/database.yml
+# Copy the database.yml.
+cp config/application.yml.sample config/application.yml
+popd
+}
+prepare_repo
