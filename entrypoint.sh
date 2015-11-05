@@ -48,12 +48,12 @@ git clone https://github.com/OpenMandrivaSoftware/rosa-build.git -b docker /app/
 pushd /app/rosa-build 
 gem install bundler
 bundle install --without development test --jobs 20 --retry 5
-echo "update styles"
-rake assets:precompile
 # Copy the database.yml.
 cp config/database.yml.sample config/database.yml
 # Copy the database.yml.
 cp config/application.yml.sample config/application.yml
+echo "update styles"
+rake assets:precompile
 popd
 }
 prepare_repo
