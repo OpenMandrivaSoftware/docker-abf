@@ -21,6 +21,7 @@ echo export DO_NOT_REPLY_EMAIL="$DO_NOT_REPLY_EMAIL"
 echo export MAILER_HTTPS_URL="$MAILER_HTTPS_URL"
 echo export GITHUB_SERVICES_ID="$GITHUB_SERVICES_ID"
 echo export GITHUB_SERVICES_PORT="$GITHUB_SERVICES_PORT"
+echo export HOST_URL="HOST_URL"
 echo export REDIS_URL="$REDIS_URL"
 echo export DATABASE_NAME="$DATABASE_NAME"
 echo export DATABASE_HOST="$DATABASE_HOST"
@@ -46,6 +47,8 @@ pushd /app/rosa-build
 cp Gemfile Gemfile.lock
 gem install bundler
 bundle install --without development test --jobs 20 --retry 5
+echo "update styles"
+rake assets:precompile
 # Copy the database.yml.
 cp config/database.yml.sample config/database.yml
 # Copy the database.yml.
@@ -54,5 +57,5 @@ popd
 }
 prepare_repo
 pushd /app/rosa-build
-puma -p 443 -C config/puma.rb
+puma -p 443 -C config/puma/production.rb
 popd
