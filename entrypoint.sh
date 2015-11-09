@@ -48,7 +48,9 @@ echo "prepare ABF environment vars"
 abf_env >> /app/envfile
 echo "apply updated env file"
 source /app/envfile
+if [ ! -d "/app/rosa-build" ]; then
 git clone https://github.com/OpenMandrivaSoftware/rosa-build.git -b docker /app/rosa-build
+fi
 pushd /app/rosa-build 
 gem install bundler
 bundle install --without development test --jobs 20 --retry 5
