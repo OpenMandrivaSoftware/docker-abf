@@ -1,8 +1,5 @@
 #!/bin/bash
-set -x
-
 abf_env(){
-
 echo export RAILS_ENV="$RAILS_ENV"
 echo export RACK_ENV="$RACK_ENV"
 echo export DEVISE_PEPPER="$DEVISE_PEPPER"
@@ -39,10 +36,8 @@ echo export PUMA_WORKERS="$PUMA_WORKERS"
 echo export ABF_WORKER_PUBLISH_WORKERS_COUNT="$ABF_WORKER_PUBLISH_WORKERS_COUNT"
 echo export ABF_WORKER_LOG_SERVER_HOST="$ABF_WORKER_LOG_SERVER_HOST"
 echo export ABF_WORKER_LOG_SERVER_PORT="$ABF_WORKER_LOG_SERVER_PORT"
-
 }
 
-#abf_env >> /tmp/env
 prepare_repo(){
 echo "prepare ABF environment vars"
 abf_env >> /app/envfile
