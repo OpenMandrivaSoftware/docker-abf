@@ -8,7 +8,7 @@ RUN apt-get update \
    && DEBIAN_FRONTEND=noninteractive \
    && apt-get install -y build-essential nodejs git cmake apt-utils libicu-dev rpm \
    && chown -R root:staff /usr/local/lib/ruby/ \
-   && mkdir -p /share/platforms
+   && mkdir -p /share/platforms \
    && chmod -R g+rwx /usr/local/
 
 # Configure the main working directory. This is the base
