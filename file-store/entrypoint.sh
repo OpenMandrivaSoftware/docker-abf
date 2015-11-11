@@ -1,7 +1,7 @@
 #!/bin/bash
 file_store_env(){
 echo export RAILS_ENV="$RAILS_ENV"
-echo export HOST_URL="HOST_URL"
+echo export HOST_URL="$HOST_URL"
 echo export SECRET_TOKEN="$SECRET_TOKEN"
 echo export DATABASE_NAME="$DATABASE_NAME"
 echo export DATABASE_HOST="$DATABASE_HOST"
@@ -33,5 +33,7 @@ popd
 
 prepare_repo
 pushd /app/file_store
+rake db:create
+rake db:migrate
 bundle exec unicorn  -l /tmp/file_store_unicorn.sock -E production -c config/unicorn.rb
 popd
