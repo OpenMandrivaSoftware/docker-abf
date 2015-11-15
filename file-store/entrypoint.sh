@@ -34,5 +34,5 @@ popd
 prepare_repo
 pushd /app/file_store
 rake db:create db:migrate
-bundle exec unicorn  -l /tmp/file_store_unicorn.sock -E production -c config/unicorn.rb
+bundle exec unicorn  -l /app/file_store/file_store_unicorn.sock -E production -c config/unicorn.rb
 popd
