@@ -9,6 +9,7 @@ echo export DATABASE_USERNAME="$DATABASE_USERNAME"
 echo export DATABASE_PASSWORD="$DATABASE_PASSWORD"
 echo export DATABASE_POOL="$DATABASE_POOL" # 5
 echo export DATABASE_TIMEOUT="$DATABASE_TIMEOUT" # 5000
+echo export GLUSTER_STORAGE_SERVER="$GLUSTER_STORAGE_SERVER" # 172.17.0.25
 }
 
 prepare_repo(){
@@ -32,6 +33,7 @@ cp config/database.yml.sample config/database.yml
 cp config/application.yml.sample config/application.yml
 cp config/deploy.rb.sample config/deploy.rb
 mkdir uploads
+mount.glusterfs $GLUSTER_STORAGE_SERVER:/fs-data /app/file_store/uploads/
 popd
 }
 

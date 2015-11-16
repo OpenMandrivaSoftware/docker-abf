@@ -6,7 +6,7 @@ MAINTAINER avokhmin@gmail.com
 # Debian image, we use apt-get to install those.
 RUN apt-get update \
    && DEBIAN_FRONTEND=noninteractive \
-   && apt-get install -y build-essential nodejs git cmake apt-utils libicu-dev rpm \
+   && apt-get install -y build-essential nodejs git cmake apt-utils libicu-dev rpm glusterfs-client \
    && chown -R root:staff /usr/local/lib/ruby/ \
    && chmod -R g+rwx /usr/local/
 
