@@ -32,7 +32,9 @@ cp config/database.yml.sample config/database.yml
 # Copy the database.yml.
 cp config/application.yml.sample config/application.yml
 cp config/deploy.rb.sample config/deploy.rb
+if [ ! -d "/app/file_store/uploads" ]; then
 mkdir uploads
+fi
 mount.glusterfs $GLUSTER_STORAGE_SERVER:/fs-data /app/file_store/uploads/
 popd
 }
