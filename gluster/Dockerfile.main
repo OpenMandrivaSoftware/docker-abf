@@ -1,0 +1,18 @@
+FROM centos:centos7
+MAINTAINER Alex Stefanov-Khryukin
+
+ENV container docker
+RUN yum update -y \
+    && yum install -y epel-release wget \
+    && wget http://download.gluster.org/pub/gluster/glusterfs/3.7/LATEST/EPEL.repo/glusterfs-epel.repo -O /etc/yum.repos.d/glusterfs-epel.repo \
+    && yum update -y\
+    && yum --setopt=tsflags=nodocs -y install glusterfs glusterfs-server glusterfs-fuse glusterfs-geo-replication glusterfs-cli glusterfs-api attr \
+
+EXPOSE 111,24007,24008,24009
+
+COPY entrypoint.sh /sbin/entrypoint.sh
+RUN chmod 755 /sbin/entrypoint.sh
+
+VOLUME /var/lib/glusterd
+VOLUME /mnt/data
+ENTRYPOINT ["/sbin/entrypoint.sh"]
