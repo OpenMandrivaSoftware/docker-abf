@@ -16,8 +16,12 @@ echo "prepare File-Store environment vars"
 file_store_env >> /app/envfile
 echo "apply updated env file"
 source /app/envfile
-if [ ! -d "/app/rosa-build" ]; then
+if [ ! -d "/app/file_store" ]; then
 git clone https://github.com/OpenMandrivaSoftware/rosa-file-store.git -b master /app/file_store
+else
+pushd /app/file_store
+git pull
+popd
 fi
 pushd /app/file_store
 gem install bundler
