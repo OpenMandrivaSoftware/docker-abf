@@ -20,11 +20,10 @@ source /app/envfile
 if [ ! -d "/app/file_store" ]; then
 git clone https://github.com/OpenMandrivaSoftware/rosa-file-store.git -b master /app/file_store
 else
-pushd /app/file_store
+rm -rf /app/file_store
 git config --global user.email "abf@openmandriva.org"
 git config --global user.name "ABF"
-git pull
-popd
+git clone https://github.com/OpenMandrivaSoftware/rosa-file-store.git -b master /app/file_store
 fi
 pushd /app/file_store
 gem install bundler
