@@ -45,6 +45,11 @@ echo "apply updated env file"
 source /app/envfile
 if [ ! -d "/app/rosa-build" ]; then
 git clone https://github.com/OpenMandrivaSoftware/rosa-build.git -b docker /app/rosa-build
+else
+rm -rf /app/rosa-build
+git config --global user.email "abf@openmandriva.org"
+git config --global user.name "ABF"
+git clone https://github.com/OpenMandrivaSoftware/rosa-build.git -b docker /app/rosa-build
 fi
 pushd /app/rosa-build 
 gem install bundler
