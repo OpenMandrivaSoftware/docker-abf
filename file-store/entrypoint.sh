@@ -10,6 +10,7 @@ echo export DATABASE_PASSWORD="$DATABASE_PASSWORD"
 echo export DATABASE_POOL="$DATABASE_POOL" # 5
 echo export DATABASE_TIMEOUT="$DATABASE_TIMEOUT" # 5000
 echo export GLUSTER_STORAGE_SERVER="$GLUSTER_STORAGE_SERVER" # 172.17.0.25
+echo export GIT_BRANCH="$GIT_BRANCH"
 }
 
 prepare_repo(){
@@ -18,12 +19,12 @@ file_store_env >> /app/envfile
 echo "apply updated env file"
 source /app/envfile
 if [ ! -d "/app/file_store" ]; then
-git clone https://github.com/OpenMandrivaSoftware/rosa-file-store.git -b master /app/file_store
+git clone https://github.com/OpenMandrivaSoftware/rosa-file-store.git -b $GIT_BRANCH /app/file_store
 else
 rm -rf /app/file_store
 git config --global user.email "abf@openmandriva.org"
 git config --global user.name "ABF"
-git clone https://github.com/OpenMandrivaSoftware/rosa-file-store.git -b master /app/file_store
+git clone https://github.com/OpenMandrivaSoftware/rosa-file-store.git -b $GIT_BRANCH /app/file_store
 fi
 pushd /app/file_store
 gem install bundler
