@@ -46,5 +46,5 @@ pushd /app/file_store
 rake db:create db:migrate
 echo "update styles"
 rake assets:precompile
-puma -p 443 -C config/environments/production.rb
+puma -p 443 -C config/puma.rb
 popd
