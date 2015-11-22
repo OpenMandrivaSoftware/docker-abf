@@ -1,7 +1,7 @@
 #!/bin/bash
 file_store_env(){
 echo export RAILS_ENV="$RAILS_ENV"
-echo export HOST_URL="$HOST_URL"
+echo export ABF_URL="$ABF_URL"
 echo export SECRET_TOKEN="$SECRET_TOKEN"
 echo export DATABASE_NAME="$DATABASE_NAME"
 echo export DATABASE_HOST="$DATABASE_HOST"
