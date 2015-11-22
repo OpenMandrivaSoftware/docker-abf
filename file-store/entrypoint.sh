@@ -32,8 +32,8 @@ bundle install --without development test --jobs 20 --retry 5
 # Copy the database.yml.
 cp config/database.yml.sample config/database.yml
 # Copy the database.yml.
-cp config/application.yml.sample config/application.yml
-cp config/deploy.rb.sample config/deploy.rb
+#cp config/application.yml.sample config/application.yml
+#cp config/deploy.rb.sample config/deploy.rb
 if [ ! -d "/app/file_store/uploads" ]; then
 mkdir uploads
 fi
@@ -46,5 +46,5 @@ pushd /app/file_store
 rake db:create db:migrate
 echo "update styles"
 rake assets:precompile
-bundle exec unicorn  -l /app/file_store/file_store_unicorn.sock -E production -c config/unicorn.rb
+puma -p 443 -C config/environments/production.rb
 popd
