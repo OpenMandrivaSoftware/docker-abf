@@ -18,7 +18,9 @@ echo export DO_NOT_REPLY_EMAIL="$DO_NOT_REPLY_EMAIL"
 echo export MAILER_HTTPS_URL="$MAILER_HTTPS_URL"
 echo export GITHUB_SERVICES_ID="$GITHUB_SERVICES_ID"
 echo export GITHUB_SERVICES_PORT="$GITHUB_SERVICES_PORT"
-echo export HOST_URL="HOST_URL"
+echo export HOST_URL="$HOST_URL"
+echo export GIT_PROJECT_URL="$GIT_PROJECT_URL"
+echo export GIT_BRANCH="$GIT_BRANCH"
 # redis://user:password.openmandriva.org:6379
 echo export REDIS_USER="$REDIS_USER"
 echo export REDIS_PASSWORD="$REDIS_PASSWORD"
@@ -44,12 +46,16 @@ abf_env >> /app/envfile
 echo "apply updated env file"
 source /app/envfile
 if [ ! -d "/app/rosa-build" ]; then
-git clone https://github.com/OpenMandrivaSoftware/rosa-build.git -b docker /app/rosa-build
+# GIT_PROJECT_URL = https://github.com/OpenMandrivaSoftware/rosa-build.git
+# GIT_BRANCH = docker
+git clone $GIT_PROJECT_URL -b $GIT_BRANCH /app/rosa-build
 else
 rm -rf /app/rosa-build
 git config --global user.email "abf@openmandriva.org"
 git config --global user.name "ABF"
-git clone https://github.com/OpenMandrivaSoftware/rosa-build.git -b docker /app/rosa-build
+# GIT_PROJECT_URL = https://github.com/OpenMandrivaSoftware/rosa-build.git
+# GIT_BRANCH = docker
+git clone $GIT_PROJECT_URL -b $GIT_BRANCH /app/rosa-build
 fi
 pushd /app/rosa-build 
 gem install bundler
