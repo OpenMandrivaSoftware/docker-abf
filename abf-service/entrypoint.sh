@@ -60,6 +60,8 @@ cp config/database.yml.sample config/database.yml
 cp config/application.yml.sample config/application.yml
 echo "update styles"
 rake assets:precompile
+echo "load db schema"
+rake db:schema:load
 popd
 }
 prepare_repo
