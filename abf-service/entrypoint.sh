@@ -42,7 +42,7 @@ echo export ABF_WORKER_LOG_SERVER_PORT="$ABF_WORKER_LOG_SERVER_PORT"
 
 prepare_repo(){
 echo "prepare ABF environment vars"
-abf_env >> /app/envfile
+abf_env > /app/envfile
 echo "apply updated env file"
 source /app/envfile
 if [ ! -d "/app/rosa-build" ]; then
