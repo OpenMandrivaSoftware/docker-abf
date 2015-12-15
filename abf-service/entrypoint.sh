@@ -21,6 +21,8 @@ echo export GITHUB_SERVICES_PORT="$GITHUB_SERVICES_PORT"
 echo export HOST_URL="$HOST_URL"
 echo export GIT_PROJECT_URL="$GIT_PROJECT_URL"
 echo export GIT_BRANCH="$GIT_BRANCH"
+echo export GITHUB_LOGIN="$GITHUB_LOGIN"
+echo export GITHUB_PASSWORD="$GITHUB_PASSWORD"
 # redis://user:password.openmandriva.org:6379
 echo export REDIS_USER="$REDIS_USER"
 echo export REDIS_PASSWORD="$REDIS_PASSWORD"
