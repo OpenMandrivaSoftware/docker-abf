@@ -8,6 +8,7 @@ run_glusterd_and_friends() {
 	echo "run daemon:$scommand"
 	$scommand
 	gluster peer probe $server1
+# add here if statement
 	gluster peer probe $server2
 	echo "show pool list"
 	gluster pool list

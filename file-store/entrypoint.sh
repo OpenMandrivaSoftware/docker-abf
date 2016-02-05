@@ -20,7 +20,7 @@ echo export MEMCACHIER_PASSWORD="$MEMCACHIER_PASSWORD"
 
 prepare_repo(){
 echo "prepare File-Store environment vars"
-file_store_env >> /app/envfile
+file_store_env > /app/envfile
 echo "apply updated env file"
 source /app/envfile
 if [ ! -d "/app/file_store" ]; then
