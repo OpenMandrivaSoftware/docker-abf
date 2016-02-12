@@ -19,10 +19,8 @@ echo export MEMCACHIER_PASSWORD="$MEMCACHIER_PASSWORD"
 }
 
 prepare_repo(){
+source /etc/profile
 echo "prepare File-Store environment vars"
-file_store_env > /app/envfile
-echo "apply updated env file"
-source /app/envfile
 if [ ! -d "/app/file_store" ]; then
 git clone https://github.com/OpenMandrivaSoftware/rosa-file-store.git -b $GIT_BRANCH /app/file_store
 else

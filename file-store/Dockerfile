@@ -1,14 +1,20 @@
-FROM ruby:2.2
-MAINTAINER avokhmin@gmail.com
+FROM openmandriva/openmandriva2014.0
+MAINTAINER alexander@mezon.ru
 
-# Install apt based dependencies required to run Rails as
-# well as RubyGems. As the Ruby image itself is based on a
-# Debian image, we use apt-get to install those.
-RUN apt-get update \
-   && DEBIAN_FRONTEND=noninteractive \
-   && apt-get install -y build-essential nodejs git cmake apt-utils libicu-dev rpm glusterfs-client \
-   && chown -R root:staff /usr/local/lib/ruby/ \
-   && chmod -R g+rwx /usr/local/
+ENV RUBY=ruby-2.2.3
+
+RUN urpmi --auto --auto-update --no-verify-rpm \
+    && urpmi.addmedia contrib_release http://abf-downloads.rosalinux.ru/openmandriva2014.0/repository/x86_64/contrib/release \
+    && urpmi.addmedia contrib_updates http://abf-downloads.rosalinux.ru/openmandriva2014.0/repository/x86_64/contrib/updates \
+    && urpmi.update -a \
+    && urpmi --no-suggests --no-verify-rpm glusterfs-client sysvinit-tools gnupg curl attr \
+	git postgresql-devel yaml-devel gcc-c++ readline-devel icu-devel cmake openssl-devel libtool bison \
+    && curl -sSL https://rvm.io/mpapis.asc | gpg2 --import - \
+    && /bin/bash -l -c "curl -L get.rvm.io | bash -s stable" \
+    && export PATH=$PATH:/usr/local/rvm/bin/ \
+    && /bin/bash -l -c "source /usr/local/rvm/scripts/rvm" \
+    && /bin/bash -l -c "rvm install $RUBY" \
+    && /bin/bash -l -c "rvm use $RUBY"
 
 # Configure the main working directory. This is the base
 # directory used in any further RUN, COPY, and ENTRYPOINT
