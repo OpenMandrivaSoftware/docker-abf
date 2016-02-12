@@ -1,17 +1,17 @@
-FROM centos:centos7
+FROM openmandriva/openmandriva2014.0
 MAINTAINER Alex Stefanov-Khryukin
 
 ENV container docker
-RUN yum update -y \
-    && yum install -y epel-release wget \
-    && wget http://download.gluster.org/pub/gluster/glusterfs/3.7/LATEST/EPEL.repo/glusterfs-epel.repo -O /etc/yum.repos.d/glusterfs-epel.repo \
-    && yum update -y\
-    && yum --setopt=tsflags=nodocs -y install glusterfs glusterfs-server glusterfs-fuse glusterfs-geo-replication glusterfs-cli glusterfs-api attr \
 
-EXPOSE 111,24007,24008,24009
+RUN urpmi --auto --auto-update --no-verify-rpm \
+    && urpmi.addmedia contrib_release http://abf-downloads.rosalinux.ru/openmandriva2014.0/repository/x86_64/contrib/release \
+    && urpmi.addmedia contrib_updates http://abf-downloads.rosalinux.ru/openmandriva2014.0/repository/x86_64/contrib/updates \
+    && urpmi.update -a \
+    && urpmi --no-suggests --no-verify-rpm glusterfs-server attr
+
+EXPOSE 111 24007 24008 24009 49152 49153 38465 38466
 
 COPY entrypoint.sh /sbin/entrypoint.sh
-RUN chmod 755 /sbin/entrypoint.sh
 
 VOLUME /var/lib/glusterd
 VOLUME /mnt/data
