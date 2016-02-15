@@ -37,10 +37,11 @@ cp config/database.yml.sample config/database.yml
 # Copy the database.yml.
 #cp config/application.yml.sample config/application.yml
 #cp config/deploy.rb.sample config/deploy.rb
-if [ ! -d "/app/file_store/uploads" ]; then
+if [ ! -d "/uploads" ]; then
 mkdir uploads
 fi
-mount.glusterfs $GLUSTER_STORAGE_SERVER:/fs-data /app/file_store/uploads/
+# remove it until https://github.com/rancher/rancher/issues/3598 fixed
+#mount.glusterfs $GLUSTER_STORAGE_SERVER:/fs-data /app/file_store/uploads/
 popd
 }
 
@@ -49,5 +50,5 @@ pushd /app/file_store
 rake db:create db:migrate
 echo "update styles"
 rake assets:precompile
-puma -p 443 -C config/puma.rb
+puma -C config/puma.rb
 popd
