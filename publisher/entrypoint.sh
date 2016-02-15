@@ -12,11 +12,11 @@ echo export BUILD_TOKEN="$BUILD_TOKEN"
 
 prepare_and_run() {
 source /etc/profile
-echo "prepare ABF publisher environment"
-echo "git clone docker-publish-worker code"
+echo "prepare ABF ISO builder environment"
+echo "git clone docker-iso-worker code"
 cd
-git clone https://github.com/OpenMandrivaSoftware/docker-publish-worker.git
-pushd docker-publish-worker
+git clone https://github.com/OpenMandrivaSoftware/docker-iso-worker.git
+pushd docker-iso-worker
 export PATH="${PATH}:/usr/local/rvm/bin"
 # skip $ARCH before we build hiredis gem
 unset ARCH
