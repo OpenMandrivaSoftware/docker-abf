@@ -26,5 +26,4 @@ bundle install
 $REDIS_HOST $REDIS_PORT $REDIS_PASSWORD $QUEUE $COUNT $BUILD_TOKENrake resque:work
 }
 
-abf_env > $HOME/envfile
 prepare_and_run
