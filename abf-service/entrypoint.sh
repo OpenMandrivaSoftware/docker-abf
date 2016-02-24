@@ -75,5 +75,5 @@ popd
 }
 prepare_repo
 pushd /app/rosa-build
-puma -p 443 -C config/puma/production.rb
+puma -C config/puma/production.rb
 popd
