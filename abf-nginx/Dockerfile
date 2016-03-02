@@ -1,17 +1,12 @@
-FROM ubuntu:trusty
+FROM openmandriva/cooker
 MAINTAINER alexander@mezon.ru
 
-RUN apt-get update && \
-    apt-get install -y software-properties-common && \
-    add-apt-repository -y ppa:nginx/stable && \
-    apt-get update && \
-    apt-get install -y nginx-full && \
-    apt-get clean
-
-# forward request and error logs to docker log collector
-RUN ln -sf /dev/stdout /var/log/nginx/access.log
-RUN ln -sf /dev/stderr /var/log/nginx/error.log
+RUN urpmi --auto --auto-update --no-verify-rpm \
+ && rm -f /etc/localtime \
+ && ln -s /usr/share/zoneinfo/UTC /etc/localtime \
+ && urpmi --no-suggests --no-verify-rpm --auto nginx
 
 EXPOSE 80 443
 
+VOLUME ["/var/log/nginx/"]
 CMD ["nginx", "-g", "daemon off;"]
