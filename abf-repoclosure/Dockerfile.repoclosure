@@ -1,0 +1,12 @@
+FROM openmandriva/cooker
+ENV RARCH x86_64
+
+RUN urpmi --auto --auto-update --no-verify-rpm \
+ && urpmi.addmedia contrib http://abf-downloads.openmandriva.org/cooker/repository/$RARCH/contrib/release/ \
+ && rm -f /etc/localtime \
+ && ln -s /usr/share/zoneinfo/UTC /etc/localtime \
+ && urpmi --no-suggests --no-verify-rpm --auto urpm-tools
+
+COPY entrypoint.sh /sbin/entrypoint.sh
+COPY profile.xml /tmp/profile.xml
+ENTRYPOINT ["/sbin/entrypoint.sh"]
