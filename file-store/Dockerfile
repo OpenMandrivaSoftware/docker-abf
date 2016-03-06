@@ -1,11 +1,11 @@
 FROM openmandriva/openmandriva2014.0
 MAINTAINER alexander@mezon.ru
 
-ENV RUBY=ruby-2.2.3
+ENV RUBY ruby-2.2.3
 
 RUN urpmi --auto --auto-update --no-verify-rpm \
-    && urpmi.addmedia contrib_release http://abf-downloads.rosalinux.ru/openmandriva2014.0/repository/x86_64/contrib/release \
-    && urpmi.addmedia contrib_updates http://abf-downloads.rosalinux.ru/openmandriva2014.0/repository/x86_64/contrib/updates \
+    && urpmi.addmedia contrib_release http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/contrib/release \
+    && urpmi.addmedia contrib_updates http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/contrib/updates \
     && urpmi.update -a \
     && urpmi --no-suggests --no-verify-rpm glusterfs-client sysvinit-tools gnupg curl attr nodejs \
 	git postgresql-devel yaml-devel gcc-c++ readline-devel icu-devel cmake openssl-devel libtool bison \
