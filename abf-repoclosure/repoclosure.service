@@ -3,4 +3,4 @@ Description=Repoclosure report
 
 [Service]
 Type=oneshot
-ExecStart=docker run -ti --rm -v /home/omv/repoclosure:/repoclosure-report openmandriva/repoclosure
+ExecStart=/usr/bin/docker run -d -v /home/omv/repoclosure:/repoclosure-report openmandriva/repoclosure
