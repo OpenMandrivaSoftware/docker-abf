@@ -4,8 +4,8 @@ MAINTAINER Alex Stefanov-Khryukin
 ENV container docker
 
 RUN urpmi --auto --auto-update --no-verify-rpm \
-    && urpmi.addmedia contrib_release http://abf-downloads.rosalinux.ru/openmandriva2014.0/repository/x86_64/contrib/release \
-    && urpmi.addmedia contrib_updates http://abf-downloads.rosalinux.ru/openmandriva2014.0/repository/x86_64/contrib/updates \
+    && urpmi.addmedia contrib_release http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/contrib/release \
+    && urpmi.addmedia contrib_updates http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/contrib/updates \
     && urpmi.update -a \
     && urpmi --no-suggests --no-verify-rpm glusterfs-client attr
 
