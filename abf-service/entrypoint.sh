@@ -45,6 +45,7 @@ echo export GITHUB_REPO_BOT_PASSWORD="$GITHUB_REPO_BOT_PASSWORD"
 }
 
 prepare_repo(){
+source /etc/profile
 echo "prepare ABF environment vars"
 abf_env > /app/envfile
 echo "apply updated env file"
@@ -70,6 +71,10 @@ cp config/database.yml.sample config/database.yml
 cp config/application.yml.sample config/application.yml
 echo "update styles"
 rake assets:precompile
+# save user icons to host
+mkdir -p public/system/users/
+rm -rf public/system/users/avatars/
+ln -s /avatars public/system/users/avatars
 # execute me on empty postgresql database
 # load db schema
 #rake db:schema:load

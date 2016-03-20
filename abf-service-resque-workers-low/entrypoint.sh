@@ -1,6 +1,7 @@
 #!/bin/bash
 
 prepare_env(){
+source /etc/profile
 echo "apply updated env file"
 if [ -f "/app/envfile" ]; then
 source /app/envfile
