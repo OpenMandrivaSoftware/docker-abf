@@ -21,10 +21,6 @@ RUN urpmi --auto --auto-update --no-verify-rpm \
 # commands.
 WORKDIR /app
 
-# Expose port 443 to the Docker host, so we can access it
-# from the outside.
-EXPOSE 443
-
 # Configure an entry point, so we don't need to specify
 # "bundle exec" for each of our commands.
 COPY entrypoint.sh /sbin/entrypoint.sh
