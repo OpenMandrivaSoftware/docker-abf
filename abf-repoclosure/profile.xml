@@ -1,7 +1,306 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <profile>
-<!-- Cooker -->
+<!-- 3.0 -->
+
+<repos>
+    <distr>
+        3.0
+    </distr>
+    
+    <name>
+        OpenMandriva 3.0
+    </name>
+    
+    <arch>
+        i586
+    </arch>
+    
+    <section>
+        main
+    </section>
+    
+    <hdlist>
+        http://abf-downloads.openmandriva.org/3.0/repository/i586/main/release/media_info/synthesis.hdlist.cz
+    </hdlist>
+    
+    <info>
+        http://abf-downloads.openmandriva.org/3.0/repository/i586/main/release/media_info/info.xml.lzma
+    </info>
+</repos>
+
+<repos>
+    <distr>
+        3.0
+    </distr>
+    
+    <name>
+        OpenMandriva 3.0
+    </name>
+    
+    <arch>
+        i586
+    </arch>
+    
+    <section>
+        contrib
+    </section>
+    
+    <hdlist>
+        http://abf-downloads.openmandriva.org/3.0/repository/i586/contrib/release/media_info/synthesis.hdlist.cz
+    </hdlist>
+    
+    <deps>
+        http://abf-downloads.openmandriva.org/3.0/repository/i586/main/release/media_info/synthesis.hdlist.cz
+        http://abf-downloads.openmandriva.org/3.0/repository/i586/non-free/release/media_info/synthesis.hdlist.cz
+        http://abf-downloads.openmandriva.org/3.0/repository/i586/restricted/release/media_info/synthesis.hdlist.cz
+    </deps>
+    
+    <info>
+        http://abf-downloads.openmandriva.org/3.0/repository/i586/contrib/release/media_info/info.xml.lzma
+    </info>
+</repos>
+
+<repos>
+    <distr>
+        3.0
+    </distr>
+    
+    <name>
+        OpenMandriva 3.0
+    </name>
+    
+    <arch>
+        i586
+    </arch>
+    
+    <section>
+        non-free
+    </section>
+    
+    <hdlist>
+        http://abf-downloads.openmandriva.org/3.0/repository/i586/non-free/release/media_info/synthesis.hdlist.cz
+    </hdlist>
+    
+    <deps>
+        http://abf-downloads.openmandriva.org/3.0/repository/i586/main/release/media_info/synthesis.hdlist.cz
+        http://abf-downloads.openmandriva.org/3.0/repository/i586/contrib/release/media_info/synthesis.hdlist.cz
+        http://abf-downloads.openmandriva.org/3.0/repository/i586/restricted/release/media_info/synthesis.hdlist.cz
+    </deps>
+    
+    <info>
+        http://abf-downloads.openmandriva.org/3.0/repository/i586/non-free/release/media_info/info.xml.lzma
+    </info>
+</repos>
+
+<repos>
+   <distr>
+       3.0
+   </distr>
+
+   <name>
+       OpenMandriva 3.0
+   </name>
+
+   <arch>
+       i586
+   </arch>
+
+   <section>
+       restricted
+   </section>
+
+   <hdlist>
+       http://abf-downloads.openmandriva.org/3.0/repository/i586/restricted/release/media_info/synthesis.hdlist.cz
+   </hdlist>
+
+   <deps>
+       http://abf-downloads.openmandriva.org/3.0/repository/i586/main/release/media_info/synthesis.hdlist.cz
+       http://abf-downloads.openmandriva.org/3.0/repository/i586/contrib/release/media_info/synthesis.hdlist.cz
+       http://abf-downloads.openmandriva.org/3.0/repository/i586/non-free/release/media_info/synthesis.hdlist.cz
+   </deps>
+
+   <info>
+       http://abf-downloads.openmandriva.org/3.0/repository/i586/restricted/release/media_info/info.xml.lzma
+   </info>
+</repos>
+
+<repos>
+    <distr>
+        3.0
+    </distr>
+    
+    <name>
+        OpenMandriva 3.0
+    </name>
+    
+    <arch>
+        x86_64
+    </arch>
+    
+    <section>
+        main
+    </section>
+    
+    <hdlist>
+        http://abf-downloads.openmandriva.org/3.0/repository/x86_64/main/release/media_info/synthesis.hdlist.cz
+    </hdlist>
+    
+    <info>
+        http://abf-downloads.openmandriva.org/3.0/repository/x86_64/main/release/media_info/info.xml.lzma
+    </info>
+</repos>
+
+<repos>
+    <distr>
+        3.0
+    </distr>
+    
+    <name>
+        OpenMandriva 3.0
+    </name>
+    
+    <arch>
+        aarch64
+    </arch>
+    
+    <section>
+        main
+    </section>
+    
+    <hdlist>
+        http://abf-downloads.openmandriva.org/3.0/repository/aarch64/main/release/media_info/synthesis.hdlist.cz
+    </hdlist>
+    
+    <info>
+        http://abf-downloads.openmandriva.org/3.0/repository/aarch64/main/release/media_info/info.xml.lzma
+    </info>
+</repos>
+
+<repos>
+    <distr>
+        3.0
+    </distr>
+    
+    <name>
+        OpenMandriva 3.0
+    </name>
+    
+    <arch>
+        armv7hl
+    </arch>
+    
+    <section>
+        main
+    </section>
+    
+    <hdlist>
+        http://abf-downloads.openmandriva.org/3.0/repository/armv7hl/main/release/media_info/synthesis.hdlist.cz
+    </hdlist>
+    
+    <info>
+        http://abf-downloads.openmandriva.org/3.0/repository/armv7hl/main/release/media_info/info.xml.lzma
+    </info>
+</repos>
+
+<repos>
+    <distr>
+        3.0
+    </distr>
+    
+    <name>
+        OpenMandriva 3.0
+    </name>
+    
+    <arch>
+        x86_64
+    </arch>
+    
+    <section>
+        contrib
+    </section>
+    
+    <hdlist>
+        http://abf-downloads.openmandriva.org/3.0/repository/x86_64/contrib/release/media_info/synthesis.hdlist.cz
+    </hdlist>
+    
+    <deps>
+        http://abf-downloads.openmandriva.org/3.0/repository/x86_64/main/release/media_info/synthesis.hdlist.cz
+        http://abf-downloads.openmandriva.org/3.0/repository/x86_64/non-free/release/media_info/synthesis.hdlist.cz
+        http://abf-downloads.openmandriva.org/3.0/repository/x86_64/restricted/release/media_info/synthesis.hdlist.cz
+    </deps>
+    
+    <info>
+        http://abf-downloads.openmandriva.org/3.0/repository/x86_64/contrib/release/media_info/info.xml.lzma
+    </info>
+</repos>
+
+<repos>
+    <distr>
+        3.0
+    </distr>
+    
+    <name>
+        OpenMandriva 3.0
+    </name>
+    
+    <arch>
+        x86_64
+    </arch>
+    
+    <section>
+        non-free
+    </section>
+    
+    <hdlist>
+        http://abf-downloads.openmandriva.org/3.0/repository/x86_64/non-free/release/media_info/synthesis.hdlist.cz
+    </hdlist>
+    
+    <deps>
+        http://abf-downloads.openmandriva.org/3.0/repository/x86_64/main/release/media_info/synthesis.hdlist.cz
+        http://abf-downloads.openmandriva.org/3.0/repository/x86_64/contrib/release/media_info/synthesis.hdlist.cz
+        http://abf-downloads.openmandriva.org/3.0/repository/x86_64/restricted/release/media_info/synthesis.hdlist.cz
+    </deps>
+    
+    <info>
+        http://abf-downloads.openmandriva.org/3.0/repository/x86_64/non-free/release/media_info/info.xml.lzma
+    </info>
+</repos>
+
+<repos>
+    <distr>
+        3.0
+    </distr>
+
+    <name>
+        OpenMandriva 3.0
+    </name>
+
+   <arch>
+        x86_64
+   </arch>
+
+   <section>
+        restricted
+   </section>
+
+   <hdlist>
+        http://abf-downloads.openmandriva.org/3.0/repository/x86_64/restricted/release/media_info/synthesis.hdlist.cz
+   </hdlist>
+
+   <deps>
+        http://abf-downloads.openmandriva.org/3.0/repository/x86_64/main/release/media_info/synthesis.hdlist.cz
+        http://abf-downloads.openmandriva.org/3.0/repository/x86_64/contrib/release/media_info/synthesis.hdlist.cz
+        http://abf-downloads.openmandriva.org/3.0/repository/x86_64/non-free/release/media_info/synthesis.hdlist.cz
+   </deps>
+
+   <info>
+       http://abf-downloads.openmandriva.org/3.0/repository/x86_64/restricted/release/media_info/info.xml.lzma
+   </info>
+</repos>
+
+</profile>
+
 
 <repos>
     <distr>
@@ -296,560 +595,6 @@
 
    <info>
        http://abf-downloads.openmandriva.org/cooker/repository/x86_64/restricted/release/media_info/info.xml.lzma
-   </info>
-</repos>
-
-</profile>
-
-<profile>
-<!-- Updates for OpenMandriva2014.x -->
-
-<repos>
-    <distr>
-        openmandriva2014.x
-    </distr>
-    
-    <name>
-        OpenMandriva 2014.x updates
-    </name>
-    
-    <arch>
-        i586
-    </arch>
-    
-    <section>
-        main
-    </section>
-    
-    <hdlist>
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/main/updates/media_info/synthesis.hdlist.cz
-    </hdlist>
-    
-    <deps>
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/main/release/media_info/synthesis.hdlist.cz
-    </deps>
-    
-    <info>
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/main/updates/media_info/info.xml.lzma
-    </info>
-</repos>
-
-<repos>
-    <distr>
-        openmandriva2014.x
-    </distr>
-    
-    <name>
-        OpenMandriva 2014.x updates
-    </name>
-    
-    <arch>
-        i586
-    </arch>
-    
-    <section>
-        contrib
-    </section>
-    
-    <hdlist>
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/contrib/updates/media_info/synthesis.hdlist.cz
-    </hdlist>
-    
-    <deps>
-	http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/contrib/release/media_info/synthesis.hdlist.cz
-	http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/main/release/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/non-free/release/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/restricted/release/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/main/updates/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/non-free/updates/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/restricted/updates/media_info/synthesis.hdlist.cz
-        
-    </deps>
-    
-    <info>
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/contrib/updates/media_info/info.xml.lzma
-    </info>
-</repos>
-
-<repos>
-    <distr>
-        openmandriva2014.x
-    </distr>
-    
-    <name>
-        OpenMandriva 2014.x updates
-    </name>
-    
-    <arch>
-        i586
-    </arch>
-    
-    <section>
-        non-free
-    </section>
-    
-    <hdlist>
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/non-free/updates/media_info/synthesis.hdlist.cz
-    </hdlist>
-    
-    <deps>
-	http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/non-free/release/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/main/release/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/contrib/release/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/restricted/release/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/main/updates/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/contrib/updates/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/restricted/updates/media_info/synthesis.hdlist.cz
-    </deps>
-    
-    <info>
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/non-free/updates/media_info/info.xml.lzma
-    </info>
-</repos>
-
-<repos>
-   <distr>
-       openmandriva2014.x
-   </distr>
-
-   <name>
-       OpenMandriva 2014.x updates
-   </name>
-
-   <arch>
-       i586
-   </arch>
-
-   <section>
-       restricted
-   </section>
-
-   <hdlist>
-       http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/restricted/updates/media_info/synthesis.hdlist.cz
-   </hdlist>
-
-   <deps>
-       http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/restricted/release/media_info/synthesis.hdlist.cz
-       http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/main/release/media_info/synthesis.hdlist.cz
-       http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/contrib/release/media_info/synthesis.hdlist.cz
-       http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/non-free/release/media_info/synthesis.hdlist.cz
-       http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/main/updates/media_info/synthesis.hdlist.cz
-       http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/contrib/updates/media_info/synthesis.hdlist.cz
-       http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/non-free/updates/media_info/synthesis.hdlist.cz
-   </deps>
-
-   <info>
-       http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/restricted/updates/media_info/info.xml.lzma
-   </info>
-</repos>
-
-<repos>
-    <distr>
-        openmandriva2014.x
-    </distr>
-    
-    <name>
-        OpenMandriva 2014.x updates
-    </name>
-    
-    <arch>
-        x86_64
-    </arch>
-    
-    <section>
-        main
-    </section>
-    
-    <hdlist>
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/main/updates/media_info/synthesis.hdlist.cz
-    </hdlist>
-    
-    <deps>
-	http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/main/release/media_info/synthesis.hdlist.cz
-    </deps
-    
-    <info>
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/main/updates/media_info/info.xml.lzma
-    </info>
-</repos>
-
-<repos>
-    <distr>
-        openmandriva2014.x
-    </distr>
-    
-    <name>
-        OpenMandriva 2014.x updates
-    </name>
-    
-    <arch>
-        x86_64
-    </arch>
-    
-    <section>
-        contrib
-    </section>
-    
-    <hdlist>
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/contrib/updates/media_info/synthesis.hdlist.cz
-    </hdlist>
-    
-    <deps>
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/contrib/release/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/main/release/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/non-free/release/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/restricted/release/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/main/updates/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/non-free/updates/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/restricted/updates/media_info/synthesis.hdlist.cz
-    </deps>
-    
-    <info>
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/contrib/updates/media_info/info.xml.lzma
-    </info>
-</repos>
-
-<repos>
-    <distr>
-        openmandriva2014.x
-    </distr>
-    
-    <name>
-        OpenMandriva 2014.x updates
-    </name>
-    
-    <arch>
-        x86_64
-    </arch>
-    
-    <section>
-        non-free
-    </section>
-    
-    <hdlist>
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/non-free/updates/media_info/synthesis.hdlist.cz
-    </hdlist>
-    
-    <deps>
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/non-free/release/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/main/release/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/contrib/release/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/restricted/release/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/main/updates/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/contrib/updates/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/restricted/updates/media_info/synthesis.hdlist.cz
-<!-- Add i586 to satisfy some closed source software -->
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/main/updates/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/contrib/updates/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/restricted/updates/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/main/release/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/contrib/release/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/restricted/release/media_info/synthesis.hdlist.cz
-    </deps>
-    
-    <info>
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/non-free/updates/media_info/info.xml.lzma
-    </info>
-</repos>
-
-<repos>
-    <distr>
-        openmandriva2014.x
-    </distr>
-
-    <name>
-        OpenMandriva 2014.x updates
-    </name>
-
-   <arch>
-        x86_64
-   </arch>
-
-   <section>
-        restricted
-   </section>
-
-   <hdlist>
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/restricted/updates/media_info/synthesis.hdlist.cz
-   </hdlist>
-
-   <deps>
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/restricted/release/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/main/release/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/contrib/release/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/non-free/release/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/main/updates/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/contrib/updates/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/non-free/updates/media_info/synthesis.hdlist.cz
-<!-- Add i586 to satisfy some closed source software -->
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/main/updates/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/contrib/updates/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/non-free/updates/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/main/release/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/contrib/release/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/non-free/release/media_info/synthesis.hdlist.cz
-   </deps>
-
-   <info>
-       http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/restricted/updates/media_info/info.xml.lzma
-   </info>
-</repos>
-
-</profile>
-
-
-<profile>
-<!-- OpenMandriva2014.0 -->
-
-<repos>
-    <distr>
-        openmandriva2014.0
-    </distr>
-    
-    <name>
-        OpenMandriva 2014.0
-    </name>
-    
-    <arch>
-        i586
-    </arch>
-    
-    <section>
-        main
-    </section>
-    
-    <hdlist>
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/main/release/media_info/synthesis.hdlist.cz
-    </hdlist>
-    
-    <info>
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/main/release/media_info/info.xml.lzma
-    </info>
-</repos>
-
-<repos>
-    <distr>
-        openmandriva2014.0
-    </distr>
-    
-    <name>
-        OpenMandriva 2014.0
-    </name>
-    
-    <arch>
-        i586
-    </arch>
-    
-    <section>
-        contrib
-    </section>
-    
-    <hdlist>
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/contrib/release/media_info/synthesis.hdlist.cz
-    </hdlist>
-    
-    <deps>
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/main/release/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/non-free/release/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/restricted/release/media_info/synthesis.hdlist.cz
-    </deps>
-    
-    <info>
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/contrib/release/media_info/info.xml.lzma
-    </info>
-</repos>
-
-<repos>
-    <distr>
-        openmandriva2014.0
-    </distr>
-    
-    <name>
-        OpenMandriva 2014.0
-    </name>
-    
-    <arch>
-        i586
-    </arch>
-    
-    <section>
-        non-free
-    </section>
-    
-    <hdlist>
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/non-free/release/media_info/synthesis.hdlist.cz
-    </hdlist>
-    
-    <deps>
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/main/release/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/contrib/release/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/restricted/release/media_info/synthesis.hdlist.cz
-    </deps>
-    
-    <info>
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/non-free/release/media_info/info.xml.lzma
-    </info>
-</repos>
-
-<repos>
-   <distr>
-       openmandriva2014.0
-   </distr>
-
-   <name>
-       OpenMandriva 2014.0
-   </name>
-
-   <arch>
-       i586
-   </arch>
-
-   <section>
-       restricted
-   </section>
-
-   <hdlist>
-       http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/restricted/release/media_info/synthesis.hdlist.cz
-   </hdlist>
-
-   <deps>
-       http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/main/release/media_info/synthesis.hdlist.cz
-       http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/contrib/release/media_info/synthesis.hdlist.cz
-       http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/non-free/release/media_info/synthesis.hdlist.cz
-   </deps>
-
-   <info>
-       http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/restricted/release/media_info/info.xml.lzma
-   </info>
-</repos>
-
-<repos>
-    <distr>
-        openmandriva2014.0
-    </distr>
-    
-    <name>
-        OpenMandriva 2014.0
-    </name>
-    
-    <arch>
-        x86_64
-    </arch>
-    
-    <section>
-        main
-    </section>
-    
-    <hdlist>
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/main/release/media_info/synthesis.hdlist.cz
-    </hdlist>
-    
-    <info>
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/main/release/media_info/info.xml.lzma
-    </info>
-</repos>
-
-<repos>
-    <distr>
-        openmandriva2014.0
-    </distr>
-    
-    <name>
-        OpenMandriva 2014.0
-    </name>
-    
-    <arch>
-        x86_64
-    </arch>
-    
-    <section>
-        contrib
-    </section>
-    
-    <hdlist>
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/contrib/release/media_info/synthesis.hdlist.cz
-    </hdlist>
-    
-    <deps>
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/main/release/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/non-free/release/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/restricted/release/media_info/synthesis.hdlist.cz
-    </deps>
-    
-    <info>
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/contrib/release/media_info/info.xml.lzma
-    </info>
-</repos>
-
-<repos>
-    <distr>
-        openmandriva2014.0
-    </distr>
-    
-    <name>
-        OpenMandriva 2014.0
-    </name>
-    
-    <arch>
-        x86_64
-    </arch>
-    
-    <section>
-        non-free
-    </section>
-    
-    <hdlist>
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/non-free/release/media_info/synthesis.hdlist.cz
-    </hdlist>
-    
-    <deps>
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/main/release/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/contrib/release/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/restricted/release/media_info/synthesis.hdlist.cz
-<!-- Add i586 to satisfy some closed source software -->
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/main/release/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/contrib/release/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/restricted/release/media_info/synthesis.hdlist.cz
-    </deps>
-    
-    <info>
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/non-free/release/media_info/info.xml.lzma
-    </info>
-</repos>
-
-<repos>
-    <distr>
-        openmandriva2014.0
-    </distr>
-
-    <name>
-        OpenMandriva 2014.0
-    </name>
-
-   <arch>
-        x86_64
-   </arch>
-
-   <section>
-        restricted
-   </section>
-
-   <hdlist>
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/restricted/release/media_info/synthesis.hdlist.cz
-   </hdlist>
-
-   <deps>
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/main/release/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/contrib/release/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/non-free/release/media_info/synthesis.hdlist.cz
-<!-- Add i586 to satisfy some closed source software -->
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/main/release/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/contrib/release/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/i586/non-free/release/media_info/synthesis.hdlist.cz
-   </deps>
-
-   <info>
-       http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/restricted/release/media_info/info.xml.lzma
    </info>
 </repos>
 
