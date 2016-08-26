@@ -50,5 +50,5 @@ pushd /app/file_store
 rake db:create db:migrate
 echo "update styles"
 rake assets:precompile
-puma -C config/puma.rb
+puma -C config/puma.rb -t 8:16 -w 8
 popd
