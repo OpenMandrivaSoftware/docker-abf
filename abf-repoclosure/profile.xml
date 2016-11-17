@@ -23,6 +23,9 @@
     <hdlist>
         http://abf-downloads.openmandriva.org/3.0/repository/i586/main/release/media_info/synthesis.hdlist.cz
     </hdlist>
+    <deps>
+        http://abf-downloads.openmandriva.org/3.0/repository/i586/main/updates/media_info/synthesis.hdlist.cz
+    </deps>
     
     <info>
         http://abf-downloads.openmandriva.org/3.0/repository/i586/main/release/media_info/info.xml.lzma
@@ -52,8 +55,12 @@
     
     <deps>
         http://abf-downloads.openmandriva.org/3.0/repository/i586/main/release/media_info/synthesis.hdlist.cz
+        http://abf-downloads.openmandriva.org/3.0/repository/i586/main/updates/media_info/synthesis.hdlist.cz
+        http://abf-downloads.openmandriva.org/3.0/repository/i586/contrib/updates/media_info/synthesis.hdlist.cz
         http://abf-downloads.openmandriva.org/3.0/repository/i586/non-free/release/media_info/synthesis.hdlist.cz
+        http://abf-downloads.openmandriva.org/3.0/repository/i586/non-free/updates/media_info/synthesis.hdlist.cz
         http://abf-downloads.openmandriva.org/3.0/repository/i586/restricted/release/media_info/synthesis.hdlist.cz
+        http://abf-downloads.openmandriva.org/3.0/repository/i586/restricted/updates/media_info/synthesis.hdlist.cz
     </deps>
     
     <info>
@@ -84,8 +91,11 @@
     
     <deps>
         http://abf-downloads.openmandriva.org/3.0/repository/i586/main/release/media_info/synthesis.hdlist.cz
-        http://abf-downloads.openmandriva.org/3.0/repository/i586/contrib/release/media_info/synthesis.hdlist.cz
+        http://abf-downloads.openmandriva.org/3.0/repository/i586/main/updates/media_info/synthesis.hdlist.cz
+        http://abf-downloads.openmandriva.org/3.0/repository/i586/contrib/updates/media_info/synthesis.hdlist.cz
+        http://abf-downloads.openmandriva.org/3.0/repository/i586/non-free/updates/media_info/synthesis.hdlist.cz
         http://abf-downloads.openmandriva.org/3.0/repository/i586/restricted/release/media_info/synthesis.hdlist.cz
+        http://abf-downloads.openmandriva.org/3.0/repository/i586/restricted/updates/media_info/synthesis.hdlist.cz
     </deps>
     
     <info>
@@ -116,8 +126,11 @@
 
    <deps>
        http://abf-downloads.openmandriva.org/3.0/repository/i586/main/release/media_info/synthesis.hdlist.cz
-       http://abf-downloads.openmandriva.org/3.0/repository/i586/contrib/release/media_info/synthesis.hdlist.cz
+       http://abf-downloads.openmandriva.org/3.0/repository/i586/main/updates/media_info/synthesis.hdlist.cz
+       http://abf-downloads.openmandriva.org/3.0/repository/i586/contrib/updates/media_info/synthesis.hdlist.cz
        http://abf-downloads.openmandriva.org/3.0/repository/i586/non-free/release/media_info/synthesis.hdlist.cz
+       http://abf-downloads.openmandriva.org/3.0/repository/i586/non-free/updates/media_info/synthesis.hdlist.cz
+       http://abf-downloads.openmandriva.org/3.0/repository/i586/restricted/updates/media_info/synthesis.hdlist.cz
    </deps>
 
    <info>
@@ -146,6 +159,10 @@
         http://abf-downloads.openmandriva.org/3.0/repository/x86_64/main/release/media_info/synthesis.hdlist.cz
     </hdlist>
     
+    <deps>
+        http://abf-downloads.openmandriva.org/3.0/repository/x86_64/main/updates/media_info/synthesis.hdlist.cz
+    </deps>
+    
     <info>
         http://abf-downloads.openmandriva.org/3.0/repository/x86_64/main/release/media_info/info.xml.lzma
     </info>
@@ -172,6 +189,10 @@
         http://abf-downloads.openmandriva.org/3.0/repository/aarch64/main/release/media_info/synthesis.hdlist.cz
     </hdlist>
     
+    <deps>
+        http://abf-downloads.openmandriva.org/3.0/repository/aarch64/main/updates/media_info/synthesis.hdlist.cz
+    </deps>
+    
     <info>
         http://abf-downloads.openmandriva.org/3.0/repository/aarch64/main/release/media_info/info.xml.lzma
     </info>
@@ -197,6 +218,10 @@
     <hdlist>
         http://abf-downloads.openmandriva.org/3.0/repository/armv7hl/main/release/media_info/synthesis.hdlist.cz
     </hdlist>
+    
+    <deps>
+        http://abf-downloads.openmandriva.org/3.0/repository/armv7hl/main/updates/media_info/synthesis.hdlist.cz
+    </deps>
     
     <info>
         http://abf-downloads.openmandriva.org/3.0/repository/armv7hl/main/release/media_info/info.xml.lzma
@@ -226,6 +251,8 @@
     
     <deps>
         http://abf-downloads.openmandriva.org/3.0/repository/x86_64/main/release/media_info/synthesis.hdlist.cz
+        http://abf-downloads.openmandriva.org/3.0/repository/x86_64/main/updates/media_info/synthesis.hdlist.cz
+        http://abf-downloads.openmandriva.org/3.0/repository/x86_64/contrib/updates/media_info/synthesis.hdlist.cz
         http://abf-downloads.openmandriva.org/3.0/repository/x86_64/non-free/release/media_info/synthesis.hdlist.cz
         http://abf-downloads.openmandriva.org/3.0/repository/x86_64/restricted/release/media_info/synthesis.hdlist.cz
     </deps>
@@ -258,6 +285,9 @@
     
     <deps>
         http://abf-downloads.openmandriva.org/3.0/repository/x86_64/main/release/media_info/synthesis.hdlist.cz
+        http://abf-downloads.openmandriva.org/3.0/repository/x86_64/non-free/updates/media_info/synthesis.hdlist.cz
+        http://abf-downloads.openmandriva.org/3.0/repository/x86_64/main/updates/media_info/synthesis.hdlist.cz
+        http://abf-downloads.openmandriva.org/3.0/repository/x86_64/contrib/updates/media_info/synthesis.hdlist.cz
         http://abf-downloads.openmandriva.org/3.0/repository/x86_64/contrib/release/media_info/synthesis.hdlist.cz
         http://abf-downloads.openmandriva.org/3.0/repository/x86_64/restricted/release/media_info/synthesis.hdlist.cz
     </deps>
@@ -291,7 +321,11 @@
    <deps>
         http://abf-downloads.openmandriva.org/3.0/repository/x86_64/main/release/media_info/synthesis.hdlist.cz
         http://abf-downloads.openmandriva.org/3.0/repository/x86_64/contrib/release/media_info/synthesis.hdlist.cz
+        http://abf-downloads.openmandriva.org/3.0/repository/x86_64/main/updates/media_info/synthesis.hdlist.cz
+        http://abf-downloads.openmandriva.org/3.0/repository/x86_64/contrib/updates/media_info/synthesis.hdlist.cz
         http://abf-downloads.openmandriva.org/3.0/repository/x86_64/non-free/release/media_info/synthesis.hdlist.cz
+        http://abf-downloads.openmandriva.org/3.0/repository/x86_64/non-free/updates/media_info/synthesis.hdlist.cz
+        http://abf-downloads.openmandriva.org/3.0/repository/x86_64/restricted/updates/media_info/synthesis.hdlist.cz
    </deps>
 
    <info>
