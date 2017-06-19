@@ -27,7 +27,8 @@ export PATH="${PATH}:/usr/local/rvm/bin"
 unset ARCH
 gem install bundler
 bundle install
-REDIS_HOST=$REDIS_HOST REDIS_PORT=$REDIS_PORT REDIS_PASSWORD=$REDIS_PASSWORD QUEUE=$QUEUE COUNT=$COUNT BUILD_TOKEN=$BUILD_TOKEN rake resque:work
+REDIS_HOST=$REDIS_HOST REDIS_PORT=$REDIS_PORT REDIS_PASSWORD=$REDIS_PASSWORD QUEUE=$QUEUE COUNT=$COUNT BUILD_TOKEN=$BUILD_TOKEN sidekiq -q iso_worker -c 1 -r ./lib/abf-worker.rb
+
 }
 
 prepare_and_run
