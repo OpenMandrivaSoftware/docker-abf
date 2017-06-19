@@ -7,7 +7,7 @@ RUN urpmi --auto --auto-update --no-verify-rpm \
  && rm -f /etc/localtime \
  && ln -s /usr/share/zoneinfo/UTC /etc/localtime \
  && gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 \
- && urpmi --no-suggests --no-verify-rpm --auto mock-urpm genhdlist2 gnupg curl sudo gnutar xz git curl sudo gnutar yaml-devel gcc-c++ readline-devel openssl-devel libtool bison procps-ng openssl \
+ && urpmi --no-suggests --no-verify-rpm --auto mock-urpm genhdlist2 gnupg curl sudo gnutar xz git curl sudo gnutar yaml-devel gcc-c++ readline-devel openssl-devel libtool bison procps-ng openssl iputils\
  && sed -i -e "s/Defaults    requiretty.*/ #Defaults    requiretty/g" /etc/sudoers \
  && /bin/bash -l -c "curl -L get.rvm.io | bash -s stable" \
  && export PATH=$PATH:/usr/local/rvm/bin/ \
