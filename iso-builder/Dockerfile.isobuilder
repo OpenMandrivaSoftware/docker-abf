@@ -7,7 +7,7 @@ RUN urpmi --auto --auto-update --no-verify-rpm \
  && rm -f /etc/localtime \
  && ln -s /usr/share/zoneinfo/UTC /etc/localtime \
  && urpmi --no-suggests --no-verify-rpm --auto gnupg procps-ng mock-urpm git curl sudo gnutar yaml-devel gcc-c++ readline-devel openssl-devel libtool bison qemu-static-aarch64 qemu-static-arm \
- && urpmi --no-suggests --no-verify-rpm --auto patch autoconf lib64ffi-devel autoconf glibc-devel patch sqlite3-devel make automake \
+ && urpmi --no-suggests --no-verify-rpm --auto patch autoconf lib64ffi-devel autoconf glibc-devel patch sqlite3-devel make automake dosfstools squashfs-tools \
  && gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 \
  && sed -i -e "s/Defaults    requiretty.*/ #Defaults    requiretty/g" /etc/sudoers \
  && echo "%mock-urpm ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers \
