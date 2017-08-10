@@ -1,19 +1,21 @@
-FROM openmandriva/openmandriva2014.0
+FROM openmandriva/cooker
 MAINTAINER alexander@mezon.ru
 
-ENV RUBY ruby-2.2.3
+ENV RUBY ruby-2.4.1
 
-RUN urpmi --auto --auto-update --no-verify-rpm \
-    && urpmi.addmedia contrib_release http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/contrib/release \
-    && urpmi.addmedia contrib_updates http://abf-downloads.openmandriva.org/openmandriva2014.0/repository/x86_64/contrib/updates \
+RUN urpmi.removemedia -a \
+    && urpmi.addmedia main http://mirror.yandex.ru/openmandriva/cooker/repository/x86_64/main/release/ \
+    && urpmi.addmedia contrib http://mirror.yandex.ru/openmandriva/cooker/repository/x86_64/contrib/release/ \
     && urpmi.update -a \
-    && urpmi --no-suggests --no-verify-rpm nodejs icu-devel git cmake postgresql-devel curl wget pkgconfig imagemagick \
-    && curl -sSL https://rvm.io/mpapis.asc | gpg2 --import - \
+    && urpmi --auto --no-suggests --no-verify-rpm procps-ng nodejs icu-devel git cmake postgresql-devel curl gnutar wget pkgconfig imagemagick \
+    && urpmi --auto --no-suggests --no-verify-rpm patch autoconf lib64yaml-devel lib64ffi-devel autoconf gcc-c++ glibc-devel patch sqlite3-devel readline-devel make automake libtool bison \
+    && curl -sSL https://rvm.io/mpapis.asc | gpg --import - \
     && /bin/bash -l -c "curl -L get.rvm.io | bash -s stable" \
     && export PATH=$PATH:/usr/local/rvm/bin/ \
     && /bin/bash -l -c "source /usr/local/rvm/scripts/rvm" \
     && /bin/bash -l -c "rvm install $RUBY" \
-    && /bin/bash -l -c "rvm use $RUBY"
+    && /bin/bash -l -c "rvm use $RUBY" \
+    && rm -rf /var/cache/urpmi/rpms/* /usr/share/man /usr/share/doc
 
 # Configure the main working directory. This is the base
 # directory used in any further RUN, COPY, and ENTRYPOINT

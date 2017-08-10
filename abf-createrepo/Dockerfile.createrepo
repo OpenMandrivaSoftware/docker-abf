@@ -1,0 +1,10 @@
+FROM openmandriva/cooker
+ENV RARCH x86_64
+
+RUN urpmi --auto --auto-update --no-verify-rpm \
+ && rm -f /etc/localtime \
+ && ln -s /usr/share/zoneinfo/UTC /etc/localtime \
+ && urpmi --no-suggests --no-verify-rpm --auto createrepo_c
+
+COPY entrypoint.sh /sbin/entrypoint.sh
+ENTRYPOINT ["/sbin/entrypoint.sh"]
