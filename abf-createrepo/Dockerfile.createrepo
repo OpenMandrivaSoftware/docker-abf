@@ -4,7 +4,9 @@ ENV RARCH x86_64
 RUN urpmi --auto --auto-update --no-verify-rpm \
  && rm -f /etc/localtime \
  && ln -s /usr/share/zoneinfo/UTC /etc/localtime \
- && urpmi --no-suggests --no-verify-rpm --auto createrepo_c
+ && urpmi --no-suggests --no-verify-rpm --auto createrepo_c \
+ && rm -rf /var/cache/urpmi/rpms/* \
+ && rm -rf /usr/share/man/ /usr/share/cracklib /usr/share/doc /var/lib/rpm
 
 COPY entrypoint.sh /sbin/entrypoint.sh
 ENTRYPOINT ["/sbin/entrypoint.sh"]
