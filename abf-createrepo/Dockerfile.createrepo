@@ -1,13 +1,12 @@
 FROM openmandriva/cooker
 ENV RARCH x86_64
 
-RUN dnf --nogpgcheck --refresh --assumeyes --setopt=install_weak_deps=False upgrade \
+RUN urpmi --auto --auto-update --no-verify-rpm \
  && rm -f /etc/localtime \
  && ln -s /usr/share/zoneinfo/UTC /etc/localtime \
- && gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 \
- && dnf --nogpgcheck --assumeyes --setopt=install_weak_deps=False install createrepo_c \
- && rm -rf /var/cache/dnf/* \
- && rm -rf /usr/share/man/ /usr/share/cracklib /usr/share/doc
+ && urpmi --no-suggests --no-verify-rpm --auto createrepo_c \
+ && rm -rf /var/cache/urpmi/rpms/* \
+ && rm -rf /usr/share/man/ /usr/share/cracklib /usr/share/doc /var/lib/rpm
 
 COPY entrypoint.sh /sbin/entrypoint.sh
 ENTRYPOINT ["/sbin/entrypoint.sh"]
