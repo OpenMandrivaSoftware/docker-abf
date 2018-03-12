@@ -13,6 +13,8 @@ for i in i686 x86_64 aarch64 armv7hl SRPMS; do
 	    else
 		printf '%s\n' "Fnished regenerating repodata in ${REPO}/${i}/${j}/${k}"
 	    fi
+	    chown root:root ${REPO}/${i}/${j}/${k}/*
+	    chmod 0666 ${REPO}/${i}/${j}/${k}/*
 	done
     done
 done
