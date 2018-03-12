@@ -11,11 +11,11 @@ for i in i686 x86_64 aarch64 armv7hl SRPMS; do
 			mkdir -p "${REPO}"/"${i}"/"${j}"/"${k}"/repodata
 			chown root:root ${REPO}/${i}/${j}/${k}/repodata
 			chmod 0755 ${REPO}/${i}/${j}/${k}/repodata
-			createrepo_c --no-database --workers=10 --simple-md-filenames --general-compress-type=xz --update "${REPO}"/"${i}"/"${j}"/"${k}"
+			createrepo_c --no-database --workers=10 --simple-md-filenames --general-compress-type=xz --ignore-lock "${REPO}"/"${i}"/"${j}"/"${k}"
 			rc=$?
 		else
 			printf '%s\n' "Regenerating and updating repodata from scratch in ${REPO}/${i}/${j}/${k}"
-			createrepo_c --no-database --update --workers=10 --simple-md-filenames --general-compress-type=xz --update "${REPO}"/"${i}"/"${j}"/"${k}"
+			createrepo_c --no-database --workers=10 --simple-md-filenames --general-compress-type=xz --update "${REPO}"/"${i}"/"${j}"/"${k}"
 			rc=$?
 		fi
 	    if [ "${rc}" != '0' ]; then
