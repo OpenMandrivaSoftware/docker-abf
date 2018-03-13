@@ -29,7 +29,8 @@ for i in i686 x86_64 aarch64 armv7hl SRPMS; do
 		printf '%s\n' "Finished regenerating repodata in ${REPO}/${i}/${j}/${k}"
 	    fi
 	    chown root:root ${REPO}/${i}/${j}/${k}/*
-	    chmod 0666 ${REPO}/${i}/${j}/${k}/*
+	    chmod 0666 ${REPO}/${i}/${j}/${k}/*.rpm
+	    chmod 0755 ${REPO}/${i}/${j}/${k}/repodata
 	done
     done
 done
