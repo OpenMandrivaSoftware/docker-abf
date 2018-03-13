@@ -10,8 +10,8 @@ for i in i686 x86_64 aarch64 armv7hl SRPMS; do
 			printf '%s\n' "Regenerating repodata from scratch in ${REPO}/${i}/${j}/${k}"
 			rm -rf "${REPO}"/"${i}"/"${j}"/"${k}"/.repodata
 			mkdir -p "${REPO}"/"${i}"/"${j}"/"${k}"/repodata
-			chown root:root ${REPO}/${i}/${j}/${k}/repodata
-			chmod 0755 ${REPO}/${i}/${j}/${k}/repodata
+			chown root:root "${REPO}"/"${i}"/"${j}"/"${k}"/repodata
+			chmod 0755 "${REPO}"/"${i}"/"${j}"/"${k}"/repodata
 			createrepo_c --no-database --workers=10 --general-compress-type=xz --ignore-lock "${REPO}"/"${i}"/"${j}"/"${k}"
 			rc=$?
 		else
