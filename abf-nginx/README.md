@@ -33,3 +33,7 @@ copying full pem to /home/omv/docker-nginx/full_chain.pem
 ```
 
 copy in /home/omv/docker-nginx/
+
+```bash
+docker build --tag=openmandriva/nginx --file Dockerfile .
+```
