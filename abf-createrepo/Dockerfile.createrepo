@@ -7,7 +7,8 @@ RUN dnf --nogpgcheck --refresh --assumeyes --setopt=install_weak_deps=False upgr
  && gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 \
  && dnf --nogpgcheck --assumeyes --setopt=install_weak_deps=False install createrepo_c \
  && rm -rf /var/cache/dnf/* \
- && rm -rf /usr/share/man/ /usr/share/cracklib /usr/share/doc
+ && rm -rf /usr/share/man/ /usr/share/cracklib /usr/share/doc \
+ && dnf autoremove --assumeyes
 
 COPY entrypoint.sh /sbin/entrypoint.sh
 ENTRYPOINT ["/sbin/entrypoint.sh"]
