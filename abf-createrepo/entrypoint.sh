@@ -25,14 +25,17 @@ for i in i686 x86_64 aarch64 armv7hl SRPMS; do
 			createrepo_c --no-database --workers=10 --general-compress-type=xz --update "${REPO}"/"${i}"/"${j}"/"${k}"
 			rc=$?
 		fi
+
 	    if [ "${rc}" != '0' ]; then
 		printf '%s\n' "Failed regenerating repodata in ${REPO}/${i}/${j}/${k}"
 	    else
 		printf '%s\n' "Finished regenerating repodata in ${REPO}/${i}/${j}/${k}"
 	    fi
-	    chown root:root "${REPO}"/"${i}"/"${j}"/"${k}"/*
-	    chmod 0666 "${REPO}"/"${i}"/"${j}"/"${k}"/*.rpm
-	    chmod 0755 "${REPO}"/"${i}"/"${j}"/"${k}"/repodata
+
+	    if [ -e "${REPO}"/"${i}"/"${j}"/"${k}"/repodata ]; then
+		[ $(stat -c "%U" "${REPO}"/"${i}"/"${j}"/"${k}"/repodata ) != 'root' ] && chown root:root "${REPO}"/"${i}"/"${j}"/"${k}"/repodata
+		[ $(stat -c "%a" "${REPO}"/"${i}"/"${j}"/"${k}"/repodata ) != '755' ] && chmod 0755 "${REPO}"/"${i}"/"${j}"/"${k}"/repodata
+	    fi
 	done
     done
 done
