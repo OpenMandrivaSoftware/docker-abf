@@ -2,6 +2,8 @@
 
 REPO=${REPOSITORY:-"/share/platforms/cooker/repository"}
 
+[ ! -d "${REPO}" ] && printf '%s\n' "Directory ${REPO} does not exist. Exiting." && exit 1
+
 for i in i686 x86_64 aarch64 armv7hl SRPMS; do
     for j in main contrib non-free restricted debug_main debug_contrib debug_non-free debug_restricted; do
 	for k in release updates testing; do
