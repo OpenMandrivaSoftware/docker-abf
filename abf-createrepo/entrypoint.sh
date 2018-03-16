@@ -17,7 +17,7 @@ for i in i686 x86_64 aarch64 armv7hl SRPMS; do
 			createrepo_c --no-database --workers=10 --general-compress-type=xz --ignore-lock "${REPO}"/"${i}"/"${j}"/"${k}"
 			rc=$?
 		else
-			printf '%s\n' "Regenerating and updating repodata from scratch in ${REPO}/${i}/${j}/${k}"
+			printf '%s\n' "Regenerating and updating repodata in ${REPO}/${i}/${j}/${k}"
 			if [ -e "${REPO}"/"${i}"/"${j}"/"${k}"/.repodata ]; then
 				printf '%s\n' "Previous .repodata exists in ${REPO}/${i}/${j}/${k}. Removing it."
 				rm -rf "${REPO}"/"${i}"/"${j}"/"${k}"/.repodata
