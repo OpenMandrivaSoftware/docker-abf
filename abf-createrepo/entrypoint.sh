@@ -39,3 +39,5 @@ for i in i686 x86_64 aarch64 armv7hl SRPMS; do
 	done
     done
 done
+
+exit 0
