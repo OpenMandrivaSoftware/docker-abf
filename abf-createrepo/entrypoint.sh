@@ -32,7 +32,7 @@ run_createrepo() {
 
     if [ "${rc}" != '0' ]; then
 	printf '%s\n' "Failed regenerating repodata in ${REPOSITORY}"
-	else
+    else
 	    printf '%s\n' "Finished regenerating repodata in ${REPOSITORY}"
     fi
 
@@ -43,7 +43,7 @@ run_createrepo() {
 
 }
 
-if [ -n "$1" ];
+if [ -n "$1" ]; then
     run_createrepo "$1" "$2"
 else
 
