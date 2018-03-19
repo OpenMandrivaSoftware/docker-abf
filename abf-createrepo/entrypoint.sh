@@ -9,7 +9,7 @@ run_createrepo() {
     REPOSITORY="$1"
     REGENERATE="$2"
 
-    [ ! -d "${REPORITORY}" ] && printf '%s\n' "Directory ${REPORITORY} does not exist. Exiting." && exit 1
+    [ ! -d "${REPOSITORY}" ] && printf '%s\n' "Directory ${REPOSITORY} does not exist. Exiting." && exit 1
     printf '%s\n' "Starting regenerating repodata in ${REPOSITORY}"
 
     if [ ! -e "${REPOSITORY}"/repodata ] || [ "$2" = 'regenerate' ]; then
@@ -48,12 +48,12 @@ if [ -n "$1" ]; then
 else
 
     REPOSITORY="/share/platforms/cooker/repository"
-    [ ! -d "${REPORITORY}" ] && printf '%s\n' "Directory ${REPORITORY} does not exist. Exiting." && exit 1
+    [ ! -d "${REPOSITORY}" ] && printf '%s\n' "Directory ${REPOSITORY} does not exist. Exiting." && exit 1
 
     for i in i686 x86_64 aarch64 armv7hl SRPMS; do
 	for j in main contrib non-free restricted debug_main debug_contrib debug_non-free debug_restricted; do
 	    for k in release updates testing; do
-		run_createrepo "${REPORITORY}/${i}/${j}/${k}"
+		run_createrepo "${REPOSITORY}/${i}/${j}/${k}"
 	    done
 	done
     done
