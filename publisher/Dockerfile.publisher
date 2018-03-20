@@ -3,7 +3,8 @@ ENV ARCH x86_64
 ENV RUBY ruby-2.2.3
 
 RUN urpmi --auto --auto-update --no-verify-rpm \
- && urpmi.addmedia contrib http://abf-downloads.openmandriva.org/cooker/repository/$ARCH/contrib/release/ \
+ && urpmi.addmedia contrib http://abf-downloads.openmandriva.org/3.0/repository/$ARCH/contrib/release/ \
+ && urpmi.addmedia contrib_up http://abf-downloads.openmandriva.org/3.0/repository/$ARCH/contrib/updates/ \
  && rm -f /etc/localtime \
  && ln -s /usr/share/zoneinfo/UTC /etc/localtime \
  && gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 \

@@ -7,6 +7,7 @@ echo export REDIS_PASSWORD="$REDIS_PASSWORD"
 echo export QUEUE="$QUEUE"
 echo export COUNT="$COUNT"
 echo export BUILD_TOKEN="$BUILD_TOKEN"
+echo export GIT_BRANCH="$GIT_BRANCH"
 
 }
 
@@ -15,7 +16,7 @@ source /etc/profile
 echo "prepare ABF publisher environment"
 echo "git clone docker-publish-worker code"
 cd
-git clone https://github.com/OpenMandrivaSoftware/docker-publish-worker.git
+git clone https://github.com/OpenMandrivaSoftware/docker-publish-worker.git -b $GIT_BRANCH
 pushd docker-publish-worker
 export PATH="${PATH}:/usr/local/rvm/bin"
 # skip $ARCH before we build hiredis gem
