@@ -31,7 +31,7 @@ git clone https://github.com/OpenMandrivaSoftware/rosa-file-store.git -b $GIT_BR
 fi
 pushd /app/file_store
 gem install bundler
-bundle install --without development test --jobs 20 --retry 5
+bundle install --deployment --without development test --jobs 20 --retry 5
 # Copy the database.yml.
 cp config/database.yml.sample config/database.yml
 # Copy the database.yml.

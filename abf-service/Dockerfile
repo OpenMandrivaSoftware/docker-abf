@@ -1,11 +1,13 @@
-FROM openmandriva/cooker
+FROM openmandriva/3.0
 MAINTAINER alexander@mezon.ru
 
 ENV RUBY ruby-2.4.1
 
 RUN urpmi.removemedia -a \
-    && urpmi.addmedia main http://mirror.yandex.ru/openmandriva/cooker/repository/x86_64/main/release/ \
-    && urpmi.addmedia contrib http://mirror.yandex.ru/openmandriva/cooker/repository/x86_64/contrib/release/ \
+    && urpmi.addmedia main http://mirror.yandex.ru/openmandriva/3.0/repository/x86_64/main/release/ \
+    && urpmi.addmedia main_up http://mirror.yandex.ru/openmandriva/3.0/repository/x86_64/main/updates/ \
+    && urpmi.addmedia contrib http://mirror.yandex.ru/openmandriva/3.0/repository/x86_64/contrib/release/ \
+    && urpmi.addmedia contrib_up http://mirror.yandex.ru/openmandriva/3.0/repository/x86_64/contrib/updates/ \
     && urpmi.update -a \
     && urpmi --auto --no-suggests --no-verify-rpm procps-ng nodejs icu-devel git cmake postgresql-devel curl gnutar wget pkgconfig imagemagick \
     && urpmi --auto --no-suggests --no-verify-rpm patch autoconf lib64yaml-devel lib64ffi-devel autoconf gcc-c++ glibc-devel patch sqlite3-devel readline-devel make automake libtool bison \
