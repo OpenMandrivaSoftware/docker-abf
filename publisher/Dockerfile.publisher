@@ -22,4 +22,5 @@ RUN urpmi --auto --auto-update --no-verify-rpm \
  && rm -rf /usr/share/man/ /usr/share/cracklib /usr/share/doc
 
 COPY entrypoint.sh /sbin/entrypoint.sh
+COPY regen.sh /sbin/regen.sh
 ENTRYPOINT ["/sbin/entrypoint.sh"]
