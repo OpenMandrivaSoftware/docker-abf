@@ -7,6 +7,7 @@ RUN dnf --nogpgcheck --refresh --assumeyes --nodocs --setopt=install_weak_deps=F
  && dnf --nogpgcheck --assumeyes --nodocs --setopt=install_weak_deps=False install createrepo_c \
  && rm -rf /var/cache/dnf/* \
  && rm -rf /var/lib/dnf/yumdb/* \
+ && rm -rf /var/lib/rpm/__db.* \
  && rm -rf /usr/share/man/ /usr/share/cracklib /usr/share/doc \
  && dnf autoremove --assumeyes
 
