@@ -2,7 +2,7 @@ FROM openmandriva/3.0
 ENV ARCH x86_64
 ENV RUBY ruby-2.2.3
 
-RUN urpmi --auto --auto-update --no-verify-rpm \
+RUN urpmi --auto --auto-update --no-suggests --no-verify-rpm \
  && urpmi.addmedia contrib http://abf-downloads.openmandriva.org/3.0/repository/$ARCH/contrib/release/ \
  && urpmi.addmedia contrib_up http://abf-downloads.openmandriva.org/3.0/repository/$ARCH/contrib/updates/ \
  && rm -f /etc/localtime \
