@@ -5,11 +5,12 @@ RUN dnf --nogpgcheck --refresh --assumeyes --nodocs --setopt=install_weak_deps=F
  && rm -f /etc/localtime \
  && ln -s /usr/share/zoneinfo/UTC /etc/localtime \
  && dnf --nogpgcheck --assumeyes --nodocs --setopt=install_weak_deps=False install createrepo_c \
+ && dnf autoremove --assumeyes \
  && rm -rf /var/cache/dnf/* \
  && rm -rf /var/lib/dnf/yumdb/* \
  && rm -rf /var/lib/rpm/__db.* \
- && rm -rf /usr/share/man/ /usr/share/cracklib /usr/share/doc \
- && dnf autoremove --assumeyes
+ && rm -rf /usr/share/man/ /usr/share/cracklib /usr/share/doc
+
 
 COPY entrypoint.sh /sbin/entrypoint.sh
 ENTRYPOINT ["/sbin/entrypoint.sh"]
