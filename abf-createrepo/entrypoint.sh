@@ -1,6 +1,7 @@
 #!/bin/sh
 
 # Modified by tpgxyz@gmail.com
+# Modified by bero@lindev.ch
 # Call this script with path where createrepo_c will run
 # and call with regenerate paramater to build repodata
 # from scratch.
@@ -26,14 +27,14 @@ run_createrepo() {
 	    printf '%s\n' "Previous .repodata exists in ${REPOSITORY}. Removing it."
 	    rm -rf "${REPOSITORY}"/.repodata
 	fi
-	    createrepo_c --no-database --workers=10 --general-compress-type=xz --update "${REPOSITORY}"
-	    rc=$?
+        createrepo_c --no-database --workers=10 --general-compress-type=xz --update "${REPOSITORY}"
+        rc=$?
     fi
 
     if [ "${rc}" != '0' ]; then
 	printf '%s\n' "Failed regenerating repodata in ${REPOSITORY}"
     else
-	    printf '%s\n' "Finished regenerating repodata in ${REPOSITORY}"
+        printf '%s\n' "Finished regenerating repodata in ${REPOSITORY}"
     fi
 
     if [ -e "${REPOSITORY}"/repodata ]; then
