@@ -13,6 +13,12 @@ run_createrepo() {
     [ ! -d "${REPOSITORY}" ] && printf '%s\n' "Directory ${REPOSITORY} does not exist. Exiting." && exit 1
     printf '%s\n' "Starting regenerating repodata in ${REPOSITORY}"
 
+    if [ -e "${REPOSITORY}"/repodata/repomd.xml ]; then
+        OLDSUM=$(sha1sum "${REPOSITORY}/repodata/repomd.xml" |cut -d' ' -f1)
+    else
+        OLDSUM=none
+    fi
+
     if [ ! -e "${REPOSITORY}"/repodata ] || [ "$2" = 'regenerate' ]; then
         printf '%s\n' "Regenerating repodata from scratch in ${REPOSITORY}"
         rm -rf "${REPOSITORY}"/.repodata
@@ -31,6 +37,21 @@ run_createrepo() {
         rc=$?
         if [ "${rc}" != '0' ]; then
             printf '%s\n' "Failed updating repodata in ${REPOSITORY}, trying regeneration from scratch"
+            run_createrepo "${REPOSITORY}" "regenerate"
+            return
+        fi
+    fi
+
+    if [ -e "${REPOSITORY}"/repodata/repomd.xml ]; then
+        NEWSUM=$(sha1sum "${REPOSITORY}/repodata/repomd.xml" |cut -d' ' -f1)
+    else
+        NEWSUM=none
+    fi
+    if [ "$OLDSUM" = "$NEWSUM" ]; then
+        if [ "$NEWSUM" = "none" ]; then
+            printf '%s\n' "repodata doesn't seem to exist, this shouldn't happen"
+        else
+            printf '%s\n' "createrepo claimed to be successful, but apparently didn't do anything - retrying"
             run_createrepo "${REPOSITORY}" "regenerate"
             return
         fi
