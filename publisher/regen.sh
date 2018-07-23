@@ -1,7 +1,7 @@
 #!/bin/sh
 PLATFORMS="$@"
 if [ -z "$PLATFORMS" ]; then
-	PLATFORMS="x86_64 aarch64 i686 armv7hnl"
+	PLATFORMS="znver1 x86_64 aarch64 i686 armv7hnl"
 fi
 echo "Rebuilding metadata for $PLATFORMS"
 for i in $PLATFORMS; do
