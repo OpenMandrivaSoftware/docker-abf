@@ -31,7 +31,7 @@ tr.fixed { background-color: green; }
 </tr>
 <tr>
 <td style="width: 109.417px;"><a href="http://repoclosure.openmandriva.org/repoclosure-armv7hnl.html">Cooker armv7hnl</a></td>
-<td style="width: 202.583px;">broken-armv7hl</td>
+<td style="width: 202.583px;">broken-armv7hnl</td>
 </tr>
 <tr>
 <td style="width: 109.417px;"><a href="http://repoclosure.openmandriva.org/repoclosure-aarch64.html">Cooker aarch64</a></td>
