@@ -27,13 +27,13 @@ tr.fixed { background-color: green; }
 <td style="width: 149px;"><a href="http://repoclosure.openmandriva.org/repoclosure-x86_64.html">Cooker x86_64</a></td>
 </tr>
 <tr>
-<td style="width: 149px;"><a href="http://repoclosure.openmandriva.org/repoclosure-armv7hnl">Cooker armv7hnl</a></td>
+<td style="width: 149px;"><a href="http://repoclosure.openmandriva.org/repoclosure-armv7hnl.html">Cooker armv7hnl</a></td>
 </tr>
 <tr>
-<td style="width: 149px;"><a href="http://repoclosure.openmandriva.org/repoclosure-aarch64">Cooker aarch64</a></td>
+<td style="width: 149px;"><a href="http://repoclosure.openmandriva.org/repoclosure-aarch64.html">Cooker aarch64</a></td>
 </tr>
 <tr>
-<td style="width: 149px;"><a href="http://repoclosure.openmandriva.org/repoclosure-znver1">Cooker znver1</a></td>
+<td style="width: 149px;"><a href="http://repoclosure.openmandriva.org/repoclosure-znver1.html">Cooker znver1</a></td>
 </tr>
 </tbody>
 </table>
