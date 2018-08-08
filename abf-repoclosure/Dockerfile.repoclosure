@@ -1,12 +1,16 @@
 FROM openmandriva/cooker
 ENV RARCH x86_64
 
-RUN urpmi --auto --auto-update --no-suggests --no-verify-rpm \
- && urpmi.addmedia contrib http://abf-downloads.openmandriva.org/cooker/repository/$RARCH/contrib/release/ \
+RUN dnf --nogpgcheck --refresh --assumeyes --nodocs --setopt=install_weak_deps=False upgrade \
  && rm -f /etc/localtime \
  && ln -s /usr/share/zoneinfo/UTC /etc/localtime \
- && urpmi --no-suggests --no-verify-rpm --auto urpm-tools
+ && dnf --nogpgcheck --assumeyes --nodocs --setopt=install_weak_deps=False install dnf-utils gnupg \
+ && dnf autoremove --assumeyes \
+ && rm -rf /var/cache/dnf/* \
+ && rm -rf /var/lib/dnf/yumdb/* \
+ && rm -rf /var/lib/rpm/__db.* \
+ && rm -rf /usr/share/man/ /usr/share/cracklib /usr/share/doc
+
 
 COPY entrypoint.sh /sbin/entrypoint.sh
-COPY profile.xml /tmp/profile.xml
 ENTRYPOINT ["/sbin/entrypoint.sh"]

@@ -8,5 +8,5 @@ docker build --tag=openmandriva/repoclosure --file Dockerfile.repoclosure .
 Create report:
 
 ```bash
-urpm-repoclosure -profile profile.xml
+run this docker
 ```
