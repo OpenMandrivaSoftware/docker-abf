@@ -73,7 +73,6 @@ EOF
 # (tpg) HTMLify it
     sed -i -e 's#^package: #<hr /><strong>package: </strong> #g' -e 's,unresolved deps:,<span style="color: #ff0000;"><strong>unresolved deps:</strong></span> ,g' /repoclosure-report/repoclosure-"$i".html
     printf '%s\n' '</body></html>' >> /repoclosure-report/repoclosure-"$i".html
-    amount=$(grep -r "package:" /repoclosure-report/repoclosure-"$i".html | wc -l)
-    sed -i -e "s/$amount/broken-$i/g" /repoclosure-report/index.html
+    sed -i -e "s/broken-$i/$(grep -r "package:" /repoclosure-report/repoclosure-"$i".html | wc -l)/g" /repoclosure-report/index.html
 done
 
