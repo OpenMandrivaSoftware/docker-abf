@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # (tpg) generate index.html
-cat <<EOF > index.html
+cat <<EOF > /repoclosure-report/index.html
 <html>
     <head>
         <title>DNF repoclosure report</title>
@@ -48,7 +48,7 @@ EOF
 
 for i in i686 x86_64 armv7hnl aarch64 znver1; do
 # (tpg) prepare HTML tulpe
-cat <<EOF > repoclosure-"$i".html
+cat <<EOF > /repoclosure-report/repoclosure-"$i".html
 <html>
     <head>
         <title>DNF repoclosure report for $i</title>
@@ -63,9 +63,9 @@ tr.fixed { background-color: green; }
     <p>Generated on $(date).</p>
 EOF
 # (tpg) run repoclosure test
-    repoclosure -q --arch "$i" --arch noarch --repofrompath=Cooker-"$i",http://abf-downloads.openmandriva.org/cooker/repository/$i/main/release/ --refresh --obsoletes --showduplicates -y >> repoclosure-"$i".html
+    repoclosure -q --arch "$i" --arch noarch --repofrompath=Cooker-"$i",http://abf-downloads.openmandriva.org/cooker/repository/$i/main/release/ --refresh --obsoletes --showduplicates -y >> /repoclosure-report/repoclosure-"$i".html
 # (tpg) HTMLify it
-    sed -i -e 's#^package: #<hr /><strong>package: </strong> #g' -e 's,unresolved deps:,<span style="color: #ff0000;"><strong>unresolved deps:</strong></span> ,g' repoclosure-"$i".html
-    printf '%s\n' '</body></html>' >> repoclosure-"$i".html
+    sed -i -e 's#^package: #<hr /><strong>package: </strong> #g' -e 's,unresolved deps:,<span style="color: #ff0000;"><strong>unresolved deps:</strong></span> ,g' /repoclosure-report/repoclosure-"$i".html
+    printf '%s\n' '</body></html>' >> /repoclosure-report/repoclosure-"$i".html
 done
 
