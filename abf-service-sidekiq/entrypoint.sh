@@ -7,7 +7,7 @@ if [ -f "/app/envfile" ]; then
 source /app/envfile
 fi
 
-pushd /app/rosa-build 
+pushd /app/rosa-build
 gem install bundler
 bundle install --without development test --jobs 20 --retry 5
 popd
@@ -15,5 +15,5 @@ popd
 
 prepare_env
 pushd /app/rosa-build
-bundle exec rake resque:workers
+sidekiq -q iso_worker_observer -q low -q middle -q notification -q publish_observer -q rpm_worker_observer -c 5
 popd
