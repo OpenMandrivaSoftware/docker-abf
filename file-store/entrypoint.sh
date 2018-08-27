@@ -21,16 +21,17 @@ echo export MEMCACHIER_PASSWORD="$MEMCACHIER_PASSWORD"
 prepare_repo(){
 source /etc/profile
 echo "prepare File-Store environment vars"
-if [ ! -d "/app/file_store" ]; then
-git clone https://github.com/OpenMandrivaSoftware/rosa-file-store.git -b $GIT_BRANCH /app/file_store
+if [ ! -d "/file_store" ]; then
+git clone https://github.com/OpenMandrivaSoftware/rosa-file-store.git -b $GIT_BRANCH /file_store
 else
-rm -rf /app/file_store
+rm -rf /file_store
 git config --global user.email "abf@openmandriva.org"
 git config --global user.name "ABF"
-git clone https://github.com/OpenMandrivaSoftware/rosa-file-store.git -b $GIT_BRANCH /app/file_store
+git clone https://github.com/OpenMandrivaSoftware/rosa-file-store.git -b $GIT_BRANCH /file_store
 fi
-pushd /app/file_store
+pushd /file_store
 gem install bundler
+gem install puma
 bundle install --deployment --without development test --jobs 20 --retry 5
 # Copy the database.yml.
 cp config/database.yml.sample config/database.yml
@@ -40,13 +41,12 @@ cp config/database.yml.sample config/database.yml
 if [ ! -d "/uploads" ]; then
 mkdir uploads
 fi
-# remove it until https://github.com/rancher/rancher/issues/3598 fixed
-#mount.glusterfs $GLUSTER_STORAGE_SERVER:/fs-data /app/file_store/uploads/
+
 popd
 }
 
 prepare_repo
-pushd /app/file_store
+pushd /file_store
 rake db:create db:migrate
 echo "update styles"
 rake assets:precompile
