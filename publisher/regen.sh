@@ -9,6 +9,6 @@ for i in $PLATFORMS; do
 		echo "$i doesn't seem to be a valid platform" >&2
 		continue
 	fi
-	/usr/bin/docker run --rm -v /home/abf-downloads:/share/platforms openmandriva/createrepo /share/platforms/cooker/repository/$i/main/release/ regenerate &
+	/usr/bin/docker run --rm -v /var/lib/openmandriva/abf-downloads:/share/platforms openmandriva/createrepo /share/platforms/cooker/repository/$i/main/release/ regenerate &
 done
 wait
