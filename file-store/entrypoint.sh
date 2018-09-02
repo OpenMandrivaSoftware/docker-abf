@@ -22,12 +22,12 @@ prepare_repo(){
 source /etc/profile
 echo "prepare File-Store environment vars"
 if [ ! -d "/app/file_store" ]; then
-git clone https://github.com/OpenMandrivaSoftware/rosa-file-store.git -b $GIT_BRANCH /file_store
+git clone https://github.com/OpenMandrivaSoftware/rosa-file-store.git -b $GIT_BRANCH /app/file_store
 else
 rm -rf /app/file_store
 git config --global user.email "abf@openmandriva.org"
 git config --global user.name "ABF"
-git clone https://github.com/OpenMandrivaSoftware/rosa-file-store.git -b $GIT_BRANCH /file_store
+git clone https://github.com/OpenMandrivaSoftware/rosa-file-store.git -b $GIT_BRANCH /app/file_store
 fi
 pushd /app/file_store
 gem install bundler
