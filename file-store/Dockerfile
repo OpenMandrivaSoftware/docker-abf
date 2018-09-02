@@ -22,7 +22,7 @@ RUN urpmi.removemedia -a \
 # Configure the main working directory. This is the base
 # directory used in any further RUN, COPY, and ENTRYPOINT
 # commands.
-WORKDIR /file_store
+WORKDIR /app
 
 # Configure an entry point, so we don't need to specify
 # "bundle exec" for each of our commands.
