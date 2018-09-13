@@ -22,7 +22,7 @@ rm -rf ${HOME}/docker-iso-worker
 git clone https://github.com/OpenMandrivaSoftware/docker-iso-worker.git
 fi
 pushd docker-iso-worker
-export PATH="${PATH}:/usr/local/rvm/bin"
+export PATH="${PATH}:$HOME/bin"
 # skip $ARCH before we build hiredis gem
 unset ARCH
 gem install bundler

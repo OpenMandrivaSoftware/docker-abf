@@ -1,26 +1,16 @@
-FROM fedora:rawhide
-ENV RUBY ruby-2.4.0
+FROM openmandriva/cooker
 
 RUN dnf update -y \
- && dnf install -y gnupg sudo mock git which findutils sed \
+ && dnf install -y --nogpgcheck gnupg sudo mock git which findutils sed parallel curl rubygems \
  && rm -f /etc/localtime \
  && ln -s /usr/share/zoneinfo/UTC /etc/localtime \
- && gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 \
  && sed -i -e "s/Defaults    requiretty.*/ #Defaults    requiretty/g" /etc/sudoers \
  && echo "%mock ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers \
- && /bin/bash -l -c "curl -L get.rvm.io | bash -s stable" \
- && export PATH=$PATH:/usr/local/rvm/bin/ \
- && /bin/bash -l -c "source /usr/local/rvm/scripts/rvm" \
- && /bin/bash -l -c "rvm install $RUBY" \
- && /bin/bash -l -c "rvm use $RUBY" \
- && /bin/bash -l -c "rvm $RUBY do rvm gemset create abf-worker" \
- && /bin/bash -l -c "rvm use $RUBY@abf-worker --default" \
- && /bin/bash -l -c "rvm gemset create abf-worker" \
  && adduser omv \
  && usermod -a -G mock omv \
- && usermod -a -G rvm omv \
  && chown -R omv:mock /etc/mock \
- && rm -rf /var/cache/dnf/* /usr/share/man /usr/share/doc
+ && rm -rf /var/lib/dnf/history/* \
+ && rm -rf /usr/share/man/ /usr/share/cracklib /usr/share/doc /tmp/*
 
 USER omv
 ENV HOME /home/omv
