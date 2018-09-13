@@ -1,16 +1,13 @@
-FROM openmandriva/cooker
-ENV ARCH x86_64
+FROM fedora:rawhide
 ENV RUBY ruby-2.4.0
 
-RUN urpmi --auto --auto-update --no-suggests --no-verify-rpm \
- && urpmi.addmedia contrib http://abf-downloads.openmandriva.org/cooker/repository/$ARCH/contrib/release/ \
+RUN dnf update -y \
+ && dnf install -y gnupg sudo mock git which findutils sed \
  && rm -f /etc/localtime \
  && ln -s /usr/share/zoneinfo/UTC /etc/localtime \
- && urpmi --no-suggests --no-verify-rpm --auto gnupg procps-ng mock-urpm git curl sudo gnutar yaml-devel gcc-c++ readline-devel openssl-devel libtool bison qemu-static-aarch64 qemu-static-arm \
- && urpmi --no-suggests --no-verify-rpm --auto patch autoconf lib64ffi-devel autoconf glibc-devel patch sqlite3-devel make automake dosfstools squashfs-tools \
  && gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 \
  && sed -i -e "s/Defaults    requiretty.*/ #Defaults    requiretty/g" /etc/sudoers \
- && echo "%mock-urpm ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers \
+ && echo "%mock ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers \
  && /bin/bash -l -c "curl -L get.rvm.io | bash -s stable" \
  && export PATH=$PATH:/usr/local/rvm/bin/ \
  && /bin/bash -l -c "source /usr/local/rvm/scripts/rvm" \
@@ -20,10 +17,10 @@ RUN urpmi --auto --auto-update --no-suggests --no-verify-rpm \
  && /bin/bash -l -c "rvm use $RUBY@abf-worker --default" \
  && /bin/bash -l -c "rvm gemset create abf-worker" \
  && adduser omv \
- && usermod -a -G mock-urpm omv \
+ && usermod -a -G mock omv \
  && usermod -a -G rvm omv \
- && chown -R omv:mock-urpm /etc/mock-urpm \
- && rm -rf /var/cache/urpmi/rpms/* /usr/share/man /usr/share/doc
+ && chown -R omv:mock /etc/mock \
+ && rm -rf /var/cache/dnf/* /usr/share/man /usr/share/doc
 
 USER omv
 ENV HOME /home/omv
