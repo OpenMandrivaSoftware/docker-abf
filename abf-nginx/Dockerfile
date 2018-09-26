@@ -1,12 +1,19 @@
-FROM openmandriva/3.0
+FROM openmandriva/cooker
 MAINTAINER alexander@mezon.ru
 
-RUN urpmi --auto --auto-update --no-suggests --no-verify-rpm \
+RUN dnf --nogpgcheck --refresh --assumeyes --nodocs --setopt=install_weak_deps=False upgrade \
  && rm -f /etc/localtime \
  && ln -s /usr/share/zoneinfo/UTC /etc/localtime \
- && urpmi --no-suggests --no-verify-rpm --auto nginx \
- && rm -rf /var/cache/urpmi/rpms/* \
- && rm -rf /usr/share/man/ /usr/share/cracklib /usr/share/doc /var/lib/rpm/* /var/lib/urpmi/*
+ && dnf --nogpgcheck --assumeyes --nodocs --setopt=install_weak_deps=False install nginx \
+ && dnf autoremove --assumeyes \
+ && dnf clean all \
+ && rm -rf /var/cache/dnf/* \
+ && rm -rf /var/share/locale/* \
+ && rm -rf /var/lib/dnf/yumdb/* \
+ && rm -rf /var/lib/dnf/history/* \
+ && rm -rf /tmp/* \
+ && rm -rf /var/lib/rpm/__db.* \
+ && rm -rf /usr/share/man/ /usr/share/cracklib /usr/share/doc
 
 EXPOSE 80 443
 VOLUME ["/var/log/nginx/"]
