@@ -3,6 +3,8 @@ MAINTAINER alexander@mezon.ru
 
 ENV RUBY ruby-2.2.3
 
+# ruby-devel task-devel zlib-devel postgresql-devel
+
 RUN urpmi.removemedia -a \
     && urpmi.addmedia main http://mirror.yandex.ru/openmandriva/3.0/repository/x86_64/main/release/ \
     && urpmi.addmedia main_up http://mirror.yandex.ru/openmandriva/3.0/repository/x86_64/main/updates/ \ 
