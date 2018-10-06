@@ -63,7 +63,7 @@ git config --global user.name "ABF"
 git clone $GIT_PROJECT_URL -b $GIT_BRANCH /app/rosa-build
 fi
 pushd /app/rosa-build
-gem install bundler
+gem install bundler tzinfo-data
 bundle install --full-index --without development test --jobs 20 --retry 10 --verbose
 # Copy the database.yml.
 cp config/database.yml.sample config/database.yml
