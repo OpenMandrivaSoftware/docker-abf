@@ -1,7 +1,7 @@
 FROM openmandriva/cooker
 
-RUN dnf update -y \
- && dnf install -y --nogpgcheck gnupg sudo mock git which findutils sed parallel curl docker rubygems dosfstools \
+RUN dnf update -y --nogpgcheck \
+ && dnf install -y --nogpgcheck gnupg sudo mock git which findutils sed parallel curl docker rubygems dosfstools squashfs-tools \
  && rm -f /etc/localtime \
  && ln -s /usr/share/zoneinfo/UTC /etc/localtime \
  && sed -i -e "s/Defaults    requiretty.*/ #Defaults    requiretty/g" /etc/sudoers \
