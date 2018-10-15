@@ -73,7 +73,7 @@ tr.fixed { background-color: green; }
 EOF
 
 # (tpg) run repoclosure test
-    dnf --setopt=keepcache=False --setopt=reposdir=/dev/null --setopt=metadata_expire=0 --disablerepo=* --repofrompath=Cooker-"$i",http://abf-downloads.openmandriva.org/cooker/repository/$i/main/release/ --enablerepo=Cooker-"$i" --refresh repoclosure --check Cooker-"$i" --arch "$i" --arch noarch --obsoletes --showduplicates -y >> /repoclosure-report/repoclosure-"$i".html
+    dnf --setopt=keepcache=False --setopt=reposdir=/dev/null --setopt=metadata_expire=0 --disablerepo=* --repofrompath=Cooker-"$i",http://abf-downloads.openmandriva.org/cooker/repository/$i/main/release/ --enablerepo=Cooker-"$i" repoclosure --check Cooker-"$i" --arch "$i" --arch noarch --obsoletes --showduplicates -y >> /repoclosure-report/repoclosure-"$i".html
 # (tpg) HTMLify it
     sed -i -e 's#^package: #<hr /><strong>package: </strong> #g' -e 's,unresolved deps:,<span style="color: #ff0000;"><strong>unresolved deps:</strong></span> ,g' /repoclosure-report/repoclosure-"$i".html
     printf '%s\n' '</body></html>' >> /repoclosure-report/repoclosure-"$i".html
