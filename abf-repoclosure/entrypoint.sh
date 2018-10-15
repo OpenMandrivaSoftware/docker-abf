@@ -53,6 +53,9 @@ EOF
 [ ! -z "$(ls -A /etc/yum.repos.d)" ] && rm -rf /etc/yum.repos.d/*
 
 for i in i686 x86_64 armv7hnl aarch64 znver1; do
+# (tpg) remove previous report
+    [ -e /repoclosure-report/repoclosure-"$i".html ] && rm -rf /repoclosure-report/repoclosure-"$i".html
+
 # (tpg) prepare HTML tulpe
 cat <<EOF > /repoclosure-report/repoclosure-"$i".html
 <html>
@@ -68,6 +71,7 @@ tr.fixed { background-color: green; }
     <h1>DNF repoclosure report for $i</h1>
     <p>Generated on $(date).</p>
 EOF
+
 # (tpg) run repoclosure test
     repoclosure -q --arch "$i" --arch noarch --repofrompath=Cooker-"$i",http://abf-downloads.openmandriva.org/cooker/repository/$i/main/release/ --refresh --obsoletes --showduplicates -y >> /repoclosure-report/repoclosure-"$i".html
 # (tpg) HTMLify it
