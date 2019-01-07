@@ -8,7 +8,7 @@ source /app/envfile
 fi
 
 pushd /app/rosa-build
-gem install bundler
+gem install bundler -v 1.16.1
 bundle install --without development test --jobs 20 --retry 5
 popd
 }
