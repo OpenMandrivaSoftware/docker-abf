@@ -9,10 +9,10 @@ errorCatch() {
 trap errorCatch ERR SIGHUP SIGINT SIGTERM
 
 prepare_env(){
-    ./etc/profile
+    source /etc/profile
     printf "%s\n" 'Apply updated env file'
     if [ -f '/app/envfile' ]; then
-	. /app/envfile
+      . /app/envfile
     fi
 
     cd /app/rosa-build
@@ -23,8 +23,8 @@ prepare_env(){
     cd -
 }
 
-prepare_env
+prepare_env()
 cd /app/rosa-build
-sidekiq -q iso_worker_observer -q low -q middle -q notification -q publish_observer -q rpm_worker_observer -c 5
+sidekiq -q iso_worker_observer -q low -q middle -q notification -q publish_observer -q rpm_worker_observer -c 5 -e production
 [ $? != '0' ] && errorCatch
 cd -
