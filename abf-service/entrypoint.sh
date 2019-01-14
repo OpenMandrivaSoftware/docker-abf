@@ -9,10 +9,10 @@ errorCatch() {
 trap errorCatch ERR SIGHUP SIGINT SIGTERM
 
 abf_env() {
-    printf '%\n' "export RAILS_ENV=$RAILS_ENV"
-    printf '%\n' "export RACK_ENV=$RACK_ENV"
-    printf '%\n' "export DEVISE_PEPPER=$DEVISE_PEPPER"
-    printf '%\n' "export DEVISE_SECRET=$DEVISE_SECRET"
+    printf '%s\n' "export RAILS_ENV=$RAILS_ENV"
+    printf '%s\n' "export RACK_ENV=$RACK_ENV"
+    printf '%s\n' "export DEVISE_PEPPER=$DEVISE_PEPPER"
+    printf '%s\n' "export DEVISE_SECRET=$DEVISE_SECRET"
     printf '%s\n' "export GOOGLE_APP_ID=$GOOGLE_APP_ID"
     printf '%s\n' "export GOOGLE_APP_SECRET=$GOOGLE_APP_SECRET"
     printf '%s\n' "export FACEBOOK_APP_ID=$FACEBOOK_APP_ID"
