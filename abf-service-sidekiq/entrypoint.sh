@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 errorCatch() {
     printf "%s\n" '-> Something went wrong. Exiting'.
@@ -23,7 +23,7 @@ prepare_env() {
     cd -
 }
 
-prepare_env()
+prepare_env
 
 cd /app/rosa-build
 sidekiq -q iso_worker_observer -q low -q middle -q notification -q publish_observer -q rpm_worker_observer -c 5 -e production
