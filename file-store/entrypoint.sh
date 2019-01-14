@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 errorCatch() {
     printf "%s\n" '-> Something went wrong. Exiting'.
