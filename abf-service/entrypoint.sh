@@ -8,7 +8,7 @@ errorCatch() {
 # Don't leave potentially dangerous stuff if we had to error out...
 trap errorCatch ERR SIGHUP SIGINT SIGTERM
 
-abf_env(){
+abf_env() {
     printf '%\n' "export RAILS_ENV=$RAILS_ENV"
     printf '%\n' "export RACK_ENV=$RACK_ENV"
     printf '%\n' "export DEVISE_PEPPER=$DEVISE_PEPPER"
@@ -53,7 +53,7 @@ abf_env(){
     printf '%s\n' "export GITHUB_REPO_BOT_PASSWORD=$GITHUB_REPO_BOT_PASSWORD"
 }
 
-prepare_repo(){
+prepare_repo() {
     . /etc/profile
     printf "%s\n" 'Prepare ABF environment vars'
     abf_env > /app/envfile

@@ -8,7 +8,7 @@ errorCatch() {
 # Don't leave potentially dangerous stuff if we had to error out...
 trap errorCatch ERR SIGHUP SIGINT SIGTERM
 
-file_store_env(){
+file_store_env() {
     printf '%s\n' "export RAILS_ENV=$RAILS_ENV"
     printf '%s\n' "export ABF_URL=$ABF_URL"
     printf '%s\n' "export SECRET_KEY_BASE=$SECRET_KEY_BASE"
@@ -26,7 +26,7 @@ file_store_env(){
     printf '%s\n' "export MEMCACHIER_PASSWORD=$MEMCACHIER_PASSWORD"
 }
 
-prepare_repo(){
+prepare_repo() {
     . /etc/profile
     printf '%s\n' 'Prepare File-Store environment vars.'
     if [ ! -d '/app/file_store' ]; then

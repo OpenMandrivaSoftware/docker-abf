@@ -8,7 +8,7 @@ errorCatch() {
 # Don't leave potentially dangerous stuff if we had to error out...
 trap errorCatch ERR SIGHUP SIGINT SIGTERM
 
-abf_env(){
+abf_env() {
     printf '%s\n' "export REDIS_HOST=$REDIS_HOST"
     printf '%s\n' "export REDIS_PORT=$REDIS_PORT"
     printf '%s\n' "export REDIS_PASSWORD=$REDIS_PASSWORD"
