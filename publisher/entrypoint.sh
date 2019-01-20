@@ -30,7 +30,7 @@ prepare_and_run() {
 # skip $ARCH before we build hiredis gem
     unset ARCH
     command -v rvm
-    gem install bundler
+    gem install bundler -v 1.17.3
     [ $? != '0' ] && errorCatch
     bundle install --without development
     [ $? != '0' ] && errorCatch
