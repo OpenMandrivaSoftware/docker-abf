@@ -79,7 +79,7 @@ else
     REPOSITORY="/share/platforms/cooker/repository"
     [ ! -d "${REPOSITORY}" ] && printf '%s\n' "Directory ${REPOSITORY} does not exist. Exiting." && exit 1
 
-    for i in i686 x86_64 aarch64 armv7hnl znver1 SRPMS; do
+    for i in i686 x86_64 aarch64 riscv64 armv7hnl znver1 SRPMS; do
         for j in main contrib non-free restricted debug_main debug_contrib debug_non-free debug_restricted; do
             for k in release updates testing; do
                 run_createrepo "${REPOSITORY}/${i}/${j}/${k}"
