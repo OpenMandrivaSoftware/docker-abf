@@ -37,7 +37,7 @@ abf_env() {
     printf '%s\n' "export REDIS_PASSWORD=$REDIS_PASSWORD"
     printf '%s\n' "export REDIS_HOST=$REDIS_HOST"
     printf '%s\n' "export REDIS_URL=redis://$REDIS_USER:$REDIS_PASSWORD@$REDIS_HOST"
-    printf '%s\n' "export DATABASE_URL=$DATABASE_HOST"
+    printf '%s\n' "export DATABASE_URL=$DATABASE_URL"
     printf '%s\n' "export FILE_STORE_URL=$FILE_STORE_URL"
     printf '%s\n' "export PUMA_THREADS=$PUMA_THREADS"
     printf '%s\n' "export PUMA_WORKERS=$PUMA_WORKERS"

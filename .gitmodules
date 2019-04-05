@@ -1,0 +1,3 @@
+[submodule "oma-file-store"]
+	path = oma-file-store
+	url = https://github.com/OpenMandrivaSoftware/oma-file-store.git
