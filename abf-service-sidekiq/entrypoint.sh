@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 
 errorCatch() {
     printf "%s\n" '-> Something went wrong. Exiting'.
