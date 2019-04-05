@@ -37,12 +37,7 @@ abf_env() {
     printf '%s\n' "export REDIS_PASSWORD=$REDIS_PASSWORD"
     printf '%s\n' "export REDIS_HOST=$REDIS_HOST"
     printf '%s\n' "export REDIS_URL=redis://$REDIS_USER:$REDIS_PASSWORD@$REDIS_HOST"
-    printf '%s\n' "export DATABASE_NAME=$DATABASE_NAME"
-    printf '%s\n' "export DATABASE_HOST=$DATABASE_HOST"
-    printf '%s\n' "export DATABASE_USERNAME=$DATABASE_USERNAME"
-    printf '%s\n' "export DATABASE_PASSWORD=$DATABASE_PASSWORD"
-    printf '%s\n' "export DATABASE_POOL=$DATABASE_POOL" # 5
-    printf '%s\n' "export DATABASE_TIMEOUT=$DATABASE_TIMEOUT" # 5000
+    printf '%s\n' "export DATABASE_URL=$DATABASE_HOST"
     printf '%s\n' "export FILE_STORE_URL=$FILE_STORE_URL"
     printf '%s\n' "export PUMA_THREADS=$PUMA_THREADS"
     printf '%s\n' "export PUMA_WORKERS=$PUMA_WORKERS"
@@ -63,6 +58,7 @@ prepare_repo() {
 # GIT_PROJECT_URL = https://github.com/OpenMandrivaSoftware/rosa-build.git
 # GIT_BRANCH = docker
 	git clone $GIT_PROJECT_URL -b $GIT_BRANCH /app/rosa-build
+	rm -f /app/rosa-build/config/database.yml
     else
 	rm -rf /app/rosa-build
 	git config --global user.email "abf@openmandriva.org"
@@ -70,6 +66,7 @@ prepare_repo() {
 # GIT_PROJECT_URL = https://github.com/OpenMandrivaSoftware/rosa-build.git
 # GIT_BRANCH = docker
 	git clone $GIT_PROJECT_URL -b $GIT_BRANCH /app/rosa-build
+	rm -f /app/rosa-build/config/database.yml
     fi
     cd /app/rosa-build
 
