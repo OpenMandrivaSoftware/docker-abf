@@ -12,18 +12,9 @@ file_store_env() {
     printf '%s\n' "export RAILS_ENV=$RAILS_ENV"
     printf '%s\n' "export ABF_URL=$ABF_URL"
     printf '%s\n' "export SECRET_KEY_BASE=$SECRET_KEY_BASE"
-    printf '%s\n' "export DATABASE_NAME=$DATABASE_NAME"
-    printf '%s\n' "export DATABASE_HOST=$DATABASE_HOST"
-    printf '%s\n' "export DATABASE_USERNAME=$DATABASE_USERNAME"
-    printf '%s\n' "export DATABASE_PASSWORD=$DATABASE_PASSWORD"
-    printf '%s\n' "export DATABASE_POOL=$DATABASE_POOL" # 5
-    printf '%s\n' "export DATABASE_TIMEOUT=$DATABASE_TIMEOUT" # 5000
+    printf '%s\n' "export DATABASE_URL=$DATABASE_URL"
     printf '%s\n' "export RAILS_SERVE_STATIC_FILES=$RAILS_SERVE_STATIC_FILES"
-    printf '%s\n' "export GLUSTER_STORAGE_SERVER=$GLUSTER_STORAGE_SERVER" # 172.17.0.25
     printf '%s\n' "export GIT_BRANCH=${GIT_BRANCH:-master}"
-    printf '%s\n' "export MEMCACHIER_SERVERS=$MEMCACHIER_SERVERS"
-    printf '%s\n' "export MEMCACHIER_USERNAME=$MEMCACHIER_USERNAME"
-    printf '%s\n' "export MEMCACHIER_PASSWORD=$MEMCACHIER_PASSWORD"
 }
 
 prepare_repo() {
@@ -31,6 +22,7 @@ prepare_repo() {
     printf '%s\n' 'Prepare File-Store environment vars.'
     if [ ! -d '/app/file_store' ]; then
 	git clone https://github.com/OpenMandrivaSoftware/rosa-file-store.git -b $GIT_BRANCH /app/file_store
+
     else
 	rm -rf /app/file_store
 	git config --global user.email "abf@openmandriva.org"
