@@ -10,7 +10,7 @@ errorCatch() {
 trap errorCatch ERR SIGHUP SIGINT SIGTERM
 
 prepare_env() {
-    sleep 10
+    sleep 30
     . /etc/profile
     printf "%s\n" 'Apply updated env file'
     if [ -f '/app/envfile' ]; then
