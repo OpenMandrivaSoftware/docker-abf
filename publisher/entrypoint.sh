@@ -12,7 +12,6 @@ abf_env() {
     printf '%s\n' "export REDIS_HOST=$REDIS_HOST"
     printf '%s\n' "export REDIS_PORT=$REDIS_PORT"
     printf '%s\n' "export REDIS_PASSWORD=$REDIS_PASSWORD"
-#	printf "%s\n' "export QUEUE=publish_worker,publish_worker_default"
     printf '%s\n' "export QUEUE=$QUEUE"
     printf '%s\n' "export COUNT=$COUNT"
     printf '%s\n' "export BUILD_TOKEN=$BUILD_TOKEN"
@@ -26,10 +25,6 @@ prepare_and_run() {
     cd
     git clone https://github.com/OpenMandrivaSoftware/docker-publish-worker.git -b $GIT_BRANCH
     cd docker-publish-worker
-    export PATH="${PATH}:/usr/local/rvm/bin"
-# skip $ARCH before we build hiredis gem
-    unset ARCH
-    command -v rvm
     gem install bundler -v 1.17.3
     [ $? != '0' ] && errorCatch
     bundle install --without development

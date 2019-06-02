@@ -1,26 +1,19 @@
-FROM openmandriva/3.0
-ENV ARCH x86_64
-ENV RUBY ruby-2.2.3
+FROM openmandriva/cooker
 
-RUN urpmi --auto --auto-update --no-suggests --no-verify-rpm \
- && urpmi.addmedia contrib http://abf-downloads.openmandriva.org/3.0/repository/$ARCH/contrib/release/ \
- && urpmi.addmedia contrib_up http://abf-downloads.openmandriva.org/3.0/repository/$ARCH/contrib/updates/ \
+RUN dnf --nogpgcheck --refresh --assumeyes --nodocs --setopt=install_weak_deps=False upgrade \
  && rm -f /etc/localtime \
  && ln -s /usr/share/zoneinfo/UTC /etc/localtime \
- && gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 \
- && urpmi --no-suggests --no-verify-rpm --auto mock-urpm genhdlist2 gnupg curl sudo gnutar xz git curl sudo gnutar yaml-devel gcc-c++ readline-devel openssl-devel libtool bison procps-ng openssl iputils docker\
- && sed -i -e "s/Defaults    requiretty.*/ #Defaults    requiretty/g" /etc/sudoers \
- && /bin/bash -l -c "curl -L get.rvm.io | bash -s stable" \
- && export PATH=$PATH:/usr/local/rvm/bin/ \
- && /bin/bash -l -c "source /usr/local/rvm/scripts/rvm" \
- && /bin/bash -l -c "rvm install $RUBY" \
- && /bin/bash -l -c "rvm use $RUBY" \
- && /bin/bash -l -c "rvm $RUBY do rvm gemset create abf-worker" \
- && /bin/bash -l -c "rvm use $RUBY@abf-worker --default" \
- && /bin/bash -l -c "rvm gemset create abf-worker" \
- && rm -rf /var/cache/urpmi/rpms/* \
+ && dnf --nogpgcheck --assumeyes --nodocs --setopt=install_weak_deps=False install createrepo_c ruby \
+	rubygems git dnf-utils gnupg openmandriva-repos-keys rubygem-json \
+ && dnf autoremove --assumeyes \
+ && dnf clean all \
+ && rm -rf /var/cache/dnf/* \
+ && rm -rf /var/lib/dnf/yumdb/* \
+ && rm -rf /var/lib/dnf/history/* \
+ && rm -rf /tmp/* \
+ && rm -rf /var/lib/rpm/__db.* \
  && rm -rf /usr/share/man/ /usr/share/cracklib /usr/share/doc
 
-COPY entrypoint.sh /sbin/entrypoint.sh
 COPY regen.sh /sbin/regen.sh
+COPY entrypoint.sh /sbin/entrypoint.sh
 ENTRYPOINT ["/sbin/entrypoint.sh"]
