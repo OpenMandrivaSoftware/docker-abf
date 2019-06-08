@@ -1,0 +1,14 @@
+FROM openmandriva/3.0
+
+RUN urpmi.update -a \
+ && urpmi --no-verify-rpm --no-suggests genhdlist2 \
+ && rm -f /etc/localtime \
+ && rm -rf /usr/share/locale \
+ && ln -s /usr/share/zoneinfo/UTC /etc/localtime \
+ && rm -rf /var/cache/ \
+ && rm -rf /tmp/* \
+ && rm -rf /var/lib/rpm/__db.* \
+ && rm -rf /usr/share/man/ /usr/share/cracklib /usr/share/doc
+
+COPY entrypoint.sh /sbin/entrypoint.sh
+ENTRYPOINT ["/sbin/entrypoint.sh"]
