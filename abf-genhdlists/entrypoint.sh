@@ -15,11 +15,11 @@ run_createrepo() {
     if [ ! -e "${REPOSITORY}"/media_info ] || [ "$2" = 'regenerate' ]; then
         printf '%s\n' "Regenerating repodata from scratch in ${REPOSITORY}"
         rm -rf "${REPOSITORY}"/media_info
-	XZ_OPT="-7 -T0" /usr/bin/genhdlist2 -v --nolock --allow-empty-media --versioned --synthesis-filter='.cz:xz -7 -T0' --xml-info --xml-info-filter='.lzma:xz -7 -T0' --no-hdlist --no-bad-rpm ${REPOSITORY}
+	/usr/bin/genhdlist2 -v --clean --nolock --allow-empty-media --versioned --xml-info --xml-info-filter='.lzma:lzma -0 --text' --no-hdlist ${REPOSITORY}
         rc=$?
     else
         printf '%s\n' "Regenerating and updating media_info in ${REPOSITORY}"
-	XZ_OPT="-7 -T0" /usr/bin/genhdlist2 -v --nolock --allow-empty-media --versioned --xml-info --xml-info-filter='.lzma:lzma -0 --text' --no-hdlist --merge --no-bad-rpm ${REPOSITORY}
+	XZ_OPT="-7 -T0" /usr/bin/genhdlist2 -v --nolock --allow-empty-media --versioned --synthesis-filter='.cz:xz -7 -T0' --xml-info --xml-info-filter='.lzma:xz -7 -T0' --no-hdlist --merge --no-bad-rpm ${REPOSITORY}
         rc=$?
         if [ "${rc}" != '0' ]; then
             printf '%s\n' "Failed updating repodata in ${REPOSITORY}, trying regeneration from scratch"
