@@ -6,8 +6,11 @@ Where to get SSL certs?
 
 git clone https://github.com/srvrco/getssl.git
 getssl -c abf.openmandriva.org
-getssl abf.openmandriva.org
-cat abf.openmandriva.org.crt chain.crt > abf.openmandriva.org-chain.pem
+getssl -f abf.openmandriva.org
+
+see update_certs.sh
+
+config:
 
 .getssl/abf.openmandriva.org/getssl.cfg
 
