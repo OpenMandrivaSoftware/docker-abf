@@ -35,3 +35,13 @@ pushd oma-file-store
 	docker build --tag=openmandriva/file-store --file Dockerfile .
 popd
 
+docker push openmandriva/createrepo
+docker push openmandriva/publisher
+docker push openmandriva/genhdlists2
+docker push openmandriva/nginx
+docker push openmandriva/repoclosure
+docker push openmandriva/abf
+docker push openmandriva/abf-service-sidekiq-worker
+docker push openmandriva/isobuilder
+docker push openmandriva/file-store
+
