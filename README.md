@@ -1,6 +1,6 @@
 # docker-abf
 
-How to config user account:
+How to activate user account:
 ```bash
 source envfile
 cd rosa-build
@@ -9,6 +9,13 @@ a=User.find_by_email("email")
 a.confirmed_at = Time.now
 a.save
 ```
+
+or just open
+
+```bash
+https://abf.openmandriva.org/users/confirmation?confirmation_token=TOKEN_HERE
+```
+
 How to add new arch:
 ```bash
 source envfile
@@ -16,7 +23,3 @@ cd rosa-build
 rails c
 Arch.create(name: "arch")
 ```
-How to activate user:
-```a=User.find_by(email: "mail")a.confirmed_at = Time.nowa.save```
-or open a link
-```https://abf.openmandriva.org/users/confirmation?confirmation_token=TOKEN_HERE```
