@@ -16,3 +16,7 @@ cd rosa-build
 rails c
 Arch.create(name: "arch")
 ```
+How to activate user:
+```a=User.find_by(email: "mail")a.confirmed_at = Time.nowa.save```
+or open a link
+```https://abf.openmandriva.org/users/confirmation?confirmation_token=TOKEN_HERE```
