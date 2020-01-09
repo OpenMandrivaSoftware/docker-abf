@@ -33,7 +33,7 @@ run_createrepo() {
             printf '%s\n' "Previous .repodata exists in ${REPOSITORY}. Removing it."
             rm -rf "${REPOSITORY}"/.repodata
         fi
-        createrepo_c --no-database --workers=10 --general-compress-type=xz --update --recycle-pkglist "${REPOSITORY}"
+        createrepo_c --no-database --workers=10 --general-compress-type=xz --update "${REPOSITORY}"
         rc=$?
         if [ "${rc}" != '0' ]; then
             printf '%s\n' "Failed updating repodata in ${REPOSITORY}, trying regeneration from scratch"
