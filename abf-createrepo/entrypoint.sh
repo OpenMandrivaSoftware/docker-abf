@@ -42,6 +42,16 @@ run_createrepo() {
         fi
     fi
 
+    APPSTREAM="${REPOSITORY}"/appstream-md
+    if ! [ -e "${APPSTREAM}"/appstream.xml.gz ]; then
+        printf '%s\n' "No Appstream metadata found in ${APPSTREAM}"
+    else
+        printf '%s\n' "Merging appstream data from ${APPSTREAM}"
+	rm -f "${REPOSITORY}"/repodata/*appstream*
+        modifyrepo_c --compress --compress-type=xz --zck "${APPSTREAM}"/appstream.xml.gz "${REPOSITORY}"/repodata/
+        modifyrepo_c --compress --compress-type=xz --zck "${APPSTREAM}"/appstream-icons.tar.gz "${REPOSITORY}"/repodata/
+    fi
+
     if [ -e "${REPOSITORY}"/repodata/repomd.xml ]; then
         NEWSUM=$(sha1sum "${REPOSITORY}/repodata/repomd.xml" |cut -d' ' -f1)
     else
