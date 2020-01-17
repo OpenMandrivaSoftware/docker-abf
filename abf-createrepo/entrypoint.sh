@@ -25,7 +25,7 @@ run_createrepo() {
         mkdir -p "${REPOSITORY}"/repodata
         chown root:root "${REPOSITORY}"/repodata
         chmod 0755 "${REPOSITORY}"/repodata
-        createrepo_c --no-database --workers=10 --ignore-lock "${REPOSITORY}"
+        createrepo_c --no-database --workers=10 --general-compress-type=xz --ignore-lock "${REPOSITORY}"
         rc=$?
     else
         printf '%s\n' "Regenerating and updating repodata in ${REPOSITORY}"
@@ -33,7 +33,7 @@ run_createrepo() {
             printf '%s\n' "Previous .repodata exists in ${REPOSITORY}. Removing it."
             rm -rf "${REPOSITORY}"/.repodata
         fi
-        createrepo_c --no-database --workers=10 --update "${REPOSITORY}"
+        createrepo_c --no-database --workers=10 --general-compress-type=xz --update "${REPOSITORY}"
         rc=$?
         if [ "${rc}" != '0' ]; then
             printf '%s\n' "Failed updating repodata in ${REPOSITORY}, trying regeneration from scratch"
@@ -48,8 +48,8 @@ run_createrepo() {
     else
         printf '%s\n' "Merging appstream data from ${APPSTREAM}"
 	rm -f "${REPOSITORY}"/repodata/*appstream*
-        modifyrepo_c --compress "${APPSTREAM}"/appstream.xml.gz "${REPOSITORY}"/repodata/
-        modifyrepo_c --compress "${APPSTREAM}"/appstream-icons.tar.gz "${REPOSITORY}"/repodata/
+        modifyrepo_c --compress --compress-type=xz "${APPSTREAM}"/appstream.xml.gz "${REPOSITORY}"/repodata/
+        modifyrepo_c --compress --compress-type=xz "${APPSTREAM}"/appstream-icons.tar.gz "${REPOSITORY}"/repodata/
     fi
 
     if [ -e "${REPOSITORY}"/repodata/repomd.xml ]; then
