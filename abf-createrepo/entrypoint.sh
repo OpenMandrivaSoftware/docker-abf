@@ -42,12 +42,17 @@ run_createrepo() {
         fi
     fi
 
+# Create AppStream repo data
     APPSTREAM="${REPOSITORY}"/appstream-md
     if ! [ -e "${APPSTREAM}"/appstream.xml.gz ]; then
         printf '%s\n' "No Appstream metadata found in ${APPSTREAM}"
     else
         printf '%s\n' "Merging appstream data from ${APPSTREAM}"
-	rm -f "${REPOSITORY}"/repodata/*appstream*
+        rm -f "${REPOSITORY}"/repodata/*appstream* ||:
+        if [ ! -e "${APPSTREAM}" ] || [ "$2" = 'regenerate' ]; then
+            chown root:root "${APPSTREAM}"
+            chmod 0755 "${APPSTREAM}"
+        fi
         modifyrepo_c --compress --compress-type=xz "${APPSTREAM}"/appstream.xml.gz "${REPOSITORY}"/repodata/
         modifyrepo_c --compress --compress-type=xz "${APPSTREAM}"/appstream-icons.tar.gz "${REPOSITORY}"/repodata/
     fi
@@ -78,6 +83,10 @@ run_createrepo() {
     if [ -e "${REPOSITORY}"/repodata ]; then
         [ $(stat -c "%U" "${REPOSITORY}"/repodata ) != 'root' ] && chown root:root "${REPOSITORY}"/repodata
         [ $(stat -c "%a" "${REPOSITORY}"/repodata ) != '755' ] && chmod 0755 "${REPOSITORY}"/repodata
+    fi
+    if [ -e "${APPSTREAM}" ]; then
+        [ $(stat -c "%U" "${APPSTREAM}" ) != 'root' ] && chown root:root "${APPSTREAM}"/repodata
+        [ $(stat -c "%a" "${APPSTREAM}" ) != '755' ] && chmod 0755 "${APPSTREAM}"
     fi
 
 }
