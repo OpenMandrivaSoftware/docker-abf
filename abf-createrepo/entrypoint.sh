@@ -53,8 +53,8 @@ run_createrepo() {
             chown root:root "${APPSTREAM}"
             chmod 0755 "${APPSTREAM}"
         fi
-        modifyrepo_c --compress --compress-type=xz "${APPSTREAM}"/appstream.xml.gz "${REPOSITORY}"/repodata/
-        modifyrepo_c --compress --compress-type=xz "${APPSTREAM}"/appstream-icons.tar.gz "${REPOSITORY}"/repodata/
+        modifyrepo_c --compress --compress-type=gz "${APPSTREAM}"/appstream.xml.gz "${REPOSITORY}"/repodata/
+        modifyrepo_c --compress --compress-type=gz "${APPSTREAM}"/appstream-icons.tar.gz "${REPOSITORY}"/repodata/
     fi
 
     if [ -e "${REPOSITORY}"/repodata/repomd.xml ]; then
