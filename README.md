@@ -1,5 +1,18 @@
 # docker-abf
 
+How to update https certs:
+This command updates certificates for
+abf.openmandriva.org and for file-store.openmandriva.org
+config lays in /root/.getssl/
+
+```bash
+getssl -f abf.openmandriva.org
+cp /etc/ssl/abf.openmandriva.org.crt /var/lib/openmandriva/docker-abf/abf-nginx/
+cp /etc/ssl/abf.openmandriva.org.key /var/lib/openmandriva/docker-abf/abf-nginx/
+cp /etc/ssl/full_chain.pem /var/lib/openmandriva/docker-abf/abf-nginx/abf.openmandriva.org-chain.pem
+```
+
+
 How to activate user account:
 ```bash
 source envfile
