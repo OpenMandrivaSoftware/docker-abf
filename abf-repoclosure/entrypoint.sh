@@ -41,6 +41,10 @@ tr.fixed { background-color: green; }
 <td style="width: 109.417px;"><a href="http://repoclosure.openmandriva.org/repoclosure-znver1.html">Cooker znver1</a></td>
 <td style="width: 202.583px;">broken-znver1</td>
 </tr>
+<tr>
+<td style="width: 109.417px;"><a href="http://repoclosure.openmandriva.org/repoclosure-riscv64.html">Cooker riscv64</a></td>
+<td style="width: 202.583px;">broken-riscv64</td>
+</tr>
 </tbody>
 </table>
 <hr />
@@ -52,7 +56,7 @@ EOF
 # (tpg) remove any repositories
 [ ! -z "$(ls -A /etc/yum.repos.d)" ] && rm -rf /etc/yum.repos.d/*
 
-for i in i686 x86_64 armv7hnl aarch64 znver1; do
+for i in i686 x86_64 armv7hnl aarch64 znver1 riscv64; do
 # (tpg) remove previous report
     [ -e /repoclosure-report/repoclosure-"$i".html ] && rm -rf /repoclosure-report/repoclosure-"$i".html
 
