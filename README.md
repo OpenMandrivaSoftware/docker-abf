@@ -23,3 +23,21 @@ cd rosa-build
 rails c
 Arch.create(name: "arch")
 ```
+
+
+How to unlock publishers:
+on abfui:
+```bash
+1. cd /app
+2. source envfile
+3. cd rosa-build
+4. rails console
+5. RepositoryStatus.where.not(status: 0).each do |a| a.ready end
+```
+
+
+How to kill stucked build:
+Same like in previous point but:
+```bash
+BuildList.where(id: [362471, 362473]).destroy_all
+```
