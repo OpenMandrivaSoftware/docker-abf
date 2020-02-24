@@ -4,7 +4,7 @@
 cat <<EOF > /repoclosure-report/index.html
 <html>
     <head>
-        <title>DNF repoclosure report</title>
+        <title>OpenMandriva DNF repoclosure report</title>
         <style type="text/css">
 tr:nth-child(even) { background-color: #d0d0d0; }
 tr:nth-child(odd) { background-color: white; }
@@ -13,41 +13,101 @@ tr.fixed { background-color: green; }
     </head>
     <body>
 
-<h1>DNF repoclosure report</h1>
-<p>This report has been updated on $(date). <br />
-<table class="contents" style="width: 328px;">
-<tbody>
-<tr>
-<td style="width: 109.417px;"><strong>Main repository</strong></td>
-<td style="width: 202.583px;"><strong>Amount of broken packages<br /></strong></td>
-</tr>
-<tr>
-<td style="width: 109.417px;"><a href="http://repoclosure.openmandriva.org/repoclosure-i686.html">Cooker i686</a></td>
-<td style="width: 202.583px;">broken-i686</td>
-</tr>
-<tr>
-<td style="width: 109.417px;"><a href="http://repoclosure.openmandriva.org/repoclosure-x86_64.html">Cooker x86_64</a></td>
-<td style="width: 202.583px;">broken-x86_64</td>
-</tr>
-<tr>
-<td style="width: 109.417px;"><a href="http://repoclosure.openmandriva.org/repoclosure-armv7hnl.html">Cooker armv7hnl</a></td>
-<td style="width: 202.583px;">broken-armv7hnl</td>
-</tr>
-<tr>
-<td style="width: 109.417px;"><a href="http://repoclosure.openmandriva.org/repoclosure-aarch64.html">Cooker aarch64</a></td>
-<td style="width: 202.583px;">broken-aarch64</td>
-</tr>
-<tr>
-<td style="width: 109.417px;"><a href="http://repoclosure.openmandriva.org/repoclosure-znver1.html">Cooker znver1</a></td>
-<td style="width: 202.583px;">broken-znver1</td>
-</tr>
-<tr>
-<td style="width: 109.417px;"><a href="http://repoclosure.openmandriva.org/repoclosure-riscv64.html">Cooker riscv64</a></td>
-<td style="width: 202.583px;">broken-riscv64</td>
-</tr>
-</tbody>
+<h1 style="text-align: center;"><span style="font-size: 
+      36px;">OpenMandriva DNF repoclosure report</span></h1>
+<p style="text-align: center;"><span style="font-size: 
+      20px;">This report has been updated on $(date)</span></p>
+<p style="text-align: left;">Below you can find a number and a list of broken dependencies of RPM packages from OpenMandriva repository.</p>
+<table class="contents" style="width: 57%; margin-right: calc(43%);">
+  <thead>
+    <tr>
+      <th style="background-color: rgb(209, 213, 216);">
+        <div style="text-align: left;"><strong><span style="font-size: 
+      20px;">Main repository</span></strong></div>
+      </th>
+      <th style="background-color: rgb(209, 213, 216);">
+        <div style="text-align: left;"><strong><span style="font-size: 
+      20px;">Amount of broken packages</span>
+            <br>
+          </strong></div>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="width: 37.1429%;">
+        <div style="text-align: left;">
+          <a href="http://repoclosure.openmandriva.org/repoclosure-i686.html"><span style="font-size: 
+      20px;">Cooker i686</span></a>
+        </div>
+      </td>
+      <td style="width: 62.653%;">
+        <div style="text-align: right;"><span style="font-size: 
+      20px;">broken-i686</span></div>
+      </td>
+    </tr>
+    <tr>
+      <td style="width: 37.1429%; background-color: rgb(239, 239, 239);">
+        <div style="text-align: left;">
+          <a href="http://repoclosure.openmandriva.org/repoclosure-x86_64.html"><span style="font-size: 
+      20px;">Cooker x86_64</span></a>
+        </div>
+      </td>
+      <td style="width: 62.653%; background-color: rgb(239, 239, 239);">
+        <div style="text-align: right;"><span style="font-size: 
+      20px;">broken-x86_64</span></div>
+      </td>
+    </tr>
+    <tr>
+      <td style="width: 37.1429%;">
+        <div style="text-align: left;">
+          <a href="http://repoclosure.openmandriva.org/repoclosure-armv7hnl.html"><span style="font-size: 
+      20px;">Cooker armv7hnl</span></a>
+        </div>
+      </td>
+      <td style="width: 62.653%;">
+        <div style="text-align: right;"><span style="font-size: 
+      20px;">broken-armv7hnl</span></div>
+      </td>
+    </tr>
+    <tr>
+      <td style="width: 37.1429%; background-color: rgb(239, 239, 239);">
+        <div style="text-align: left;">
+          <a href="http://repoclosure.openmandriva.org/repoclosure-aarch64.html"><span style="font-size: 
+      20px;">Cooker aarch64</span></a>
+        </div>
+      </td>
+      <td style="width: 62.653%; background-color: rgb(239, 239, 239);">
+        <div style="text-align: right;"><span style="font-size: 
+      20px;">broken-aarch64</span></div>
+      </td>
+    </tr>
+    <tr>
+      <td style="width: 37.1429%;">
+        <div style="text-align: left;">
+          <a href="http://repoclosure.openmandriva.org/repoclosure-znver1.html"><span style="font-size: 
+      20px;">Cooker znver1</span></a>
+        </div>
+      </td>
+      <td style="width: 62.653%;">
+        <div style="text-align: right;"><span style="font-size: 
+      20px;">broken-znver1</span></div>
+      </td>
+    </tr>
+  </tbody>
 </table>
-<hr />
+<p>
+  <br>
+</p>
+<hr>
+<p style="text-align: right;"><span style="font-size: 
+      10px;">Author: 
+    <a href="mailto:tpgxyz@gmail.com">tpgxyz@gmail.com</a>
+  </span></p>
+<p style="text-align: right;"><span style="font-size: 
+      10px;">Sources can be found 
+    <a href="https://github.com/OpenMandrivaSoftware/docker-abf/tree/master/abf-repoclosure" rel="noopener noreferrer" target="_blank">here</a>
+  </span></p>
 
 </body>
 </html>
@@ -64,7 +124,7 @@ for i in i686 x86_64 armv7hnl aarch64 znver1 riscv64; do
 cat <<EOF > /repoclosure-report/repoclosure-"$i".html
 <html>
     <head>
-        <title>DNF repoclosure report for $i</title>
+        <title>OpenMandriva DNF repoclosure report for $i</title>
         <style type="text/css">
 tr:nth-child(even) { background-color: #d0d0d0; }
 tr:nth-child(odd) { background-color: white; }
@@ -72,8 +132,10 @@ tr.fixed { background-color: green; }
         </style>
     </head>
     <body>
-    <h1>DNF repoclosure report for $i</h1>
-    <p>Generated on $(date).</p>
+<h1 style="text-align: center;"><span style="font-size: 
+      36px;">OpenMandriva DNF repoclosure report for $i</span></h1>
+<p style="text-align: center;"><span style="font-size: 
+      20px;">This report has been generated on $(date)</span></p>
 EOF
 
 # (tpg) run repoclosure test
@@ -83,4 +145,3 @@ EOF
     printf '%s\n' '</body></html>' >> /repoclosure-report/repoclosure-"$i".html
     sed -i -e "s/broken-$i/$(grep -r "package:" /repoclosure-report/repoclosure-"$i".html | wc -l)/g" /repoclosure-report/index.html
 done
-
