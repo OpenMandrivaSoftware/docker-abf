@@ -25,7 +25,7 @@ run_createrepo() {
         mkdir -p "${REPOSITORY}"/repodata
         chown root:root "${REPOSITORY}"/repodata
         chmod 0755 "${REPOSITORY}"/repodata
-        createrepo_c --no-database --workers=10 --general-compress-type=xz --ignore-lock "${REPOSITORY}"
+        createrepo_c --no-database --workers=10 --general-compress-type=zck --zck --ignore-lock "${REPOSITORY}"
         rc=$?
     else
         printf '%s\n' "Regenerating and updating repodata in ${REPOSITORY}"
@@ -33,7 +33,7 @@ run_createrepo() {
             printf '%s\n' "Previous .repodata exists in ${REPOSITORY}. Removing it."
             rm -rf "${REPOSITORY}"/.repodata
         fi
-        createrepo_c --no-database --workers=10 --general-compress-type=xz --update "${REPOSITORY}"
+        createrepo_c --no-database --workers=10 --general-compress-type=zck --zck --update "${REPOSITORY}"
         rc=$?
         if [ "${rc}" != '0' ]; then
             printf '%s\n' "Failed updating repodata in ${REPOSITORY}, trying regeneration from scratch"
