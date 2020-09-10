@@ -34,9 +34,9 @@ prepare_and_run() {
     export PATH="${PATH}:$HOME/bin"
 # skip $ARCH before we build hiredis gem
     unset ARCH
-    gem install bundler
+    sudo gem install bundler
     [ $? != '0' ] && errorCatch
-    bundle install
+    sudo bundle install
     [ $? != '0' ] && errorCatch
     REDIS_HOST=$REDIS_HOST REDIS_PORT=$REDIS_PORT REDIS_PASSWORD=$REDIS_PASSWORD QUEUE=$QUEUE COUNT=$COUNT BUILD_TOKEN=$BUILD_TOKEN sidekiq -q iso_worker -c 1 -r ./lib/abf-worker.rb
     [ $? != '0' ] && errorCatch

@@ -81,12 +81,12 @@ run_createrepo() {
     fi
 
     if [ -e "${REPOSITORY}"/repodata ]; then
-        [ $(stat -c "%U" "${REPOSITORY}"/repodata ) != 'root' ] && chown root:root "${REPOSITORY}"/repodata
-        [ $(stat -c "%a" "${REPOSITORY}"/repodata ) != '755' ] && chmod 0755 "${REPOSITORY}"/repodata
+        [ "$(stat -c "%U" "${REPOSITORY}"/repodata )" != 'root' ] && chown root:root "${REPOSITORY}"/repodata
+        [ "$(stat -c "%a" "${REPOSITORY}"/repodata )" != '755' ] && chmod 0755 "${REPOSITORY}"/repodata
     fi
     if [ -e "${APPSTREAM}" ]; then
-        [ $(stat -c "%U" "${APPSTREAM}" ) != 'root' ] && chown root:root "${APPSTREAM}"/repodata
-        [ $(stat -c "%a" "${APPSTREAM}" ) != '755' ] && chmod 0755 "${APPSTREAM}"
+        [ "$(stat -c "%U" "${APPSTREAM}" )" != 'root' ] && chown root:root "${APPSTREAM}"/repodata
+        [ "$(stat -c "%a" "${APPSTREAM}" )" != '755' ] && chmod 0755 "${APPSTREAM}"
     fi
 
 }
