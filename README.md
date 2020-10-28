@@ -47,7 +47,13 @@ on abfui:
 4. rails console
 5. RepositoryStatus.where.not(status: 0).each do |a| a.ready end
 ```
-
+How to unlock publishers:
+on rosa abfui:
+```bash
+# docker exec -ti abf_ui_id sh
+# bundle exec rails c
+# RepositoryStatus.where.not(status: 0).each do |a| a.ready end
+```
 
 How to kill stucked build:
 Same like in previous point but:

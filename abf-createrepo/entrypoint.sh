@@ -25,7 +25,7 @@ run_createrepo() {
         mkdir -p "${REPOSITORY}"/repodata
         chown root:root "${REPOSITORY}"/repodata
         chmod 0755 "${REPOSITORY}"/repodata
-        createrepo_c --no-database --workers=10 --general-compress-type=xz --ignore-lock "${REPOSITORY}"
+        createrepo_c --no-database --workers=10 --general-compress-type=xz --zck --ignore-lock "${REPOSITORY}"
         rc=$?
     else
         printf '%s\n' "Regenerating and updating repodata in ${REPOSITORY}"
@@ -33,7 +33,7 @@ run_createrepo() {
             printf '%s\n' "Previous .repodata exists in ${REPOSITORY}. Removing it."
             rm -rf "${REPOSITORY}"/.repodata
         fi
-        createrepo_c --no-database --workers=10 --general-compress-type=xz --update "${REPOSITORY}"
+        createrepo_c --no-database --workers=10 --general-compress-type=xz --zck --update "${REPOSITORY}"
         rc=$?
         if [ "${rc}" != '0' ]; then
             printf '%s\n' "Failed updating repodata in ${REPOSITORY}, trying regeneration from scratch"
@@ -81,12 +81,12 @@ run_createrepo() {
     fi
 
     if [ -e "${REPOSITORY}"/repodata ]; then
-        [ $(stat -c "%U" "${REPOSITORY}"/repodata ) != 'root' ] && chown root:root "${REPOSITORY}"/repodata
-        [ $(stat -c "%a" "${REPOSITORY}"/repodata ) != '755' ] && chmod 0755 "${REPOSITORY}"/repodata
+        [ "$(stat -c "%U" "${REPOSITORY}"/repodata )" != 'root' ] && chown root:root "${REPOSITORY}"/repodata
+        [ "$(stat -c "%a" "${REPOSITORY}"/repodata )" != '755' ] && chmod 0755 "${REPOSITORY}"/repodata
     fi
     if [ -e "${APPSTREAM}" ]; then
-        [ $(stat -c "%U" "${APPSTREAM}" ) != 'root' ] && chown root:root "${APPSTREAM}"/repodata
-        [ $(stat -c "%a" "${APPSTREAM}" ) != '755' ] && chmod 0755 "${APPSTREAM}"
+        [ "$(stat -c "%U" "${APPSTREAM}" )" != 'root' ] && chown root:root "${APPSTREAM}"/repodata
+        [ "$(stat -c "%a" "${APPSTREAM}" )" != '755' ] && chmod 0755 "${APPSTREAM}"
     fi
 
 }
