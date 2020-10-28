@@ -1,0 +1,17 @@
+{
+  "platforms": [
+    {
+      "name": "rolling",
+      "url": "http://abf-downloads.openmandriva.org/rolling/repository",
+      "arches": ["x86_64", "znver1"],
+      "repositories": ["main", "unsupported", "non-free", "restricted"]
+    },
+    {
+      "name": "cooker",
+      "url": "http://abf-downloads.openmandriva.org/cooker/repository",
+      "arches": ["x86_64", "znver1", "aarch64", "riscv64"],
+      "repositories": ["main", "unsupported", "non-free", "restricted"]
+    }
+  ],
+  "output_path": "/repoclosure-output"
+}
