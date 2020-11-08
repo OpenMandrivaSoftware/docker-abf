@@ -13,5 +13,6 @@ RUN dnf --nogpgcheck --refresh --assumeyes --nodocs --setopt=install_weak_deps=F
  && rm -rf /var/lib/rpm/__db.* \
  && rm -rf /usr/share/man/ /usr/share/cracklib /usr/share/doc
 
+ADD repoclosure/ /repoclosure/
 COPY repoclosure.py /repoclosure/
 ENTRYPOINT ["/repoclosure/repoclosure.py"]
