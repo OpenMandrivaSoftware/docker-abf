@@ -4,13 +4,15 @@
       "name": "rolling",
       "url": "http://abf-downloads.openmandriva.org/rolling/repository",
       "arches": ["x86_64", "znver1"],
-      "repositories": ["main", "unsupported", "non-free", "restricted"]
+      "repositories": ["main", "unsupported", "non-free", "restricted"],
+      "types": ["release"]
     },
     {
       "name": "cooker",
       "url": "http://abf-downloads.openmandriva.org/cooker/repository",
       "arches": ["x86_64", "znver1", "aarch64", "riscv64"],
-      "repositories": ["main", "unsupported", "non-free", "restricted"]
+      "repositories": ["main", "unsupported", "non-free", "restricted"],
+      "types": ["release"]
     }
   ],
   "output_path": "/repoclosure-output"

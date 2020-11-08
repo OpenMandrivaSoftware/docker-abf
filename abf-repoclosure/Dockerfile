@@ -3,7 +3,7 @@ FROM openmandriva/cooker
 RUN dnf --nogpgcheck --refresh --assumeyes --nodocs --setopt=install_weak_deps=False upgrade \
  && rm -f /etc/localtime \
  && ln -s /usr/share/zoneinfo/UTC /etc/localtime \
- && dnf --nogpgcheck --assumeyes --nodocs --setopt=install_weak_deps=False install dnf-utils distro-release-repos \
+ && dnf --nogpgcheck --assumeyes --nodocs --setopt=install_weak_deps=False install make dnf-utils distro-release-repos python-cheetah \
  && dnf autoremove --assumeyes \
  && dnf clean all \
  && rm -rf /var/cache/dnf/* \
@@ -13,6 +13,9 @@ RUN dnf --nogpgcheck --refresh --assumeyes --nodocs --setopt=install_weak_deps=F
  && rm -rf /var/lib/rpm/__db.* \
  && rm -rf /usr/share/man/ /usr/share/cracklib /usr/share/doc
 
-ADD repoclosure/ /repoclosure/
-COPY repoclosure.py /repoclosure/
+WORKDIR /repoclosure
+COPY repoclosure.py ./
+#COPY Makefile ./
+COPY repoclosure ./repoclosure
+RUN make -C ./repoclosure/templates all
 ENTRYPOINT ["/repoclosure/repoclosure.py"]

@@ -11,3 +11,7 @@ Create report:
 /usr/bin/docker run -d --rm -v /var/lib/openmandriva/docker-abf/abf-repoclosure/config.json:/repoclosure/config.json -v /var/lib/openmandriva/omv/repoclosure:/repoclosure-output openmandriva/repoclosure
 
 ```
+
+
+## More info
+https://github.com/rosa-abf/repoclosure-dnf
