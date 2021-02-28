@@ -1,7 +1,11 @@
 ARCH=$(uname -m)
 
 pushd abf-createrepo/
+	if [ "$ARCH" != "x86_64" ]; then
+		sed -i -e '/ENV RARCH x86_64/d' Dockerfile.createrepo
+	fi
 	docker build --tag=openmandriva/createrepo:${ARCH} --file Dockerfile.createrepo .
+	git checkout Dockerfile.createrepo
 popd
 
 pushd publisher
