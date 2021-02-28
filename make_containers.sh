@@ -21,7 +21,7 @@ pushd abf-nginx
 popd
 
 pushd abf-repoclosure
-	docker build --tag=openmandriva/repoclosure:${ARCH} --file Dockerfile.repoclosure .
+	docker build --tag=openmandriva/repoclosure:${ARCH} --file Dockerfile .
 popd
 
 pushd abf-service
