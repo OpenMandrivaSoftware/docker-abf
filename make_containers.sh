@@ -42,7 +42,7 @@ popd
 
 docker push openmandriva/createrepo:${ARCH}
 docker push openmandriva/publisher:${ARCH}
-docker push openmandriva/genhdlists2:${ARCH}
+#docker push openmandriva/genhdlists2:${ARCH}
 docker push openmandriva/nginx:${ARCH}
 docker push openmandriva/repoclosure:${ARCH}
 docker push openmandriva/abf:${ARCH}
@@ -50,3 +50,12 @@ docker push openmandriva/abf-service-sidekiq-worker:${ARCH}
 docker push openmandriva/isobuilder:${ARCH}
 docker push openmandriva/file-store:${ARCH}
 docker push openmandriva/redis:${ARCH}
+
+for i in createrepo publisher nginx repoclosure abf abf-service-sidekiq-worker isobuilder file-store redis; do
+	docker manifest create openmandriva/$i:latest \
+		--amend openmandriva/$i:x86_64 \
+		--amend openmandriva/$i:aarch64
+	docker manifest annotate openmandriva/$i:latest openmandriva/$i:x86_64 --os linux --arch amd64
+	docker manifest annotate openmandriva/$i:latest openmandriva/$i:aarch64 --os linux --arch arm64
+	docker manifest push openmandriva/$i:latest
+done
