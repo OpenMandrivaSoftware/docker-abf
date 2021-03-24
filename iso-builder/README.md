@@ -15,7 +15,7 @@ docker rm -v $(docker ps -a -q -f status=exited)
 ```bash
 docker run -ti --rm --privileged=true -e BUILD_TOKEN="your_token" \
 	-e QUEUE="iso_worker" \
-	 -e REDIS_HOST="host" -e REDIS_PORT="6379" openmandriva/builder
+	 -e REDIS_HOST="host" -e REDIS_PORT="6379" openmandriva/isobuilder
 ```
 
 ## Prepare Environment
