@@ -7,8 +7,7 @@ RUN dnf --nogpgcheck --refresh --assumeyes --nodocs --setopt=install_weak_deps=F
  && dnf autoremove --assumeyes \
  && dnf clean all \
  && rm -rf /var/cache/dnf/* \
- && rm -rf /var/lib/dnf/yumdb/* \
- && rm -rf /var/lib/dnf/history/* \
+ && rm -rf /var/lib/dnf/* \
  && rm -rf /tmp/* \
  && rm -rf /var/lib/rpm/__db.* \
  && rm -rf /usr/share/man/ /usr/share/cracklib /usr/share/doc

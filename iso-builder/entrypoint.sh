@@ -8,17 +8,6 @@ errorCatch() {
 # Don't leave potentially dangerous stuff if we had to error out...
 trap errorCatch ERR SIGHUP SIGINT SIGTERM
 
-abf_env() {
-    printf '%s\n' "export REDIS_HOST=$REDIS_HOST"
-    printf '%s\n' "export REDIS_PORT=$REDIS_PORT"
-    printf '%s\n' "export REDIS_PASSWORD=$REDIS_PASSWORD"
-#	printf '%s\n' "export QUEUE=publish_worker,publish_worker_default"
-    printf '%s\n' "export QUEUE=$QUEUE"
-    printf '%s\n' "export COUNT=$COUNT"
-    printf '%s\n' "export BUILD_TOKEN=$BUILD_TOKEN"
-
-}
-
 prepare_and_run() {
     . /etc/profile
     printf '%s\n' 'Prepare ABF ISO builder environment.'

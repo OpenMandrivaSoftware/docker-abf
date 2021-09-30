@@ -1,17 +1,19 @@
 FROM openmandriva/cooker
 
-RUN dnf update -y --nogpgcheck \
- && dnf install -y --nogpgcheck gnupg sudo mock git which findutils sed parallel curl docker rubygems dosfstools squashfs-tools dbus-python \
+RUN dnf --nogpgcheck --refresh --assumeyes --nodocs --setopt=install_weak_deps=False upgrade \
+ && dnf --nogpgcheck --assumeyes --nodocs --setopt=install_weak_deps=False install gnupg sudo git which findutils sed curl rubygems dosfstools squashfs-tools dbus-python \
+ && dnf autoremove --assumeyes \
+ && dnf clean all \
  && rm -f /etc/localtime \
  && ln -s /usr/share/zoneinfo/UTC /etc/localtime \
- && sed -i -e "s/Defaults    requiretty.*/ #Defaults    requiretty/g" /etc/sudoers \
- && echo "%mock ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers \
+ && echo "%omv ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers \
+ && echo "Defaults:omv !requiretty"  >> /etc/sudoers \
  && adduser omv \
- && usermod -a -G mock omv \
- && usermod -a -G docker omv \
- && chown -R omv:mock /etc/mock \
- && rm -rf /var/lib/dnf/history/* \
- && rm -rf /usr/share/man/ /usr/share/cracklib /usr/share/doc /tmp/*
+ && rm -rf /var/cache/dnf/* \
+ && rm -rf /var/lib/dnf/* \
+ && rm -rf /tmp/* \
+ && rm -rf /var/lib/rpm/__db.* \
+ && rm -rf /usr/share/man/ /usr/share/cracklib /usr/share/doc
 
 USER omv
 ENV HOME /home/omv

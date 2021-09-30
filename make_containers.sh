@@ -1,15 +1,15 @@
 ARCH=$(uname -m)
 
 pushd abf-createrepo/
-	if [ "$ARCH" != "x86_64" ]; then
-		sed -i -e '/ENV RARCH x86_64/d' Dockerfile.createrepo
-	fi
-	docker build --tag=openmandriva/createrepo:${ARCH} --file Dockerfile.createrepo .
-	git checkout Dockerfile.createrepo
+    if [ "$ARCH" != "x86_64" ]; then
+	sed -i -e '/ENV RARCH x86_64/d' Dockerfile.createrepo
+    fi
+    docker build --tag=openmandriva/createrepo:${ARCH} --file Dockerfile.createrepo .
+    git checkout Dockerfile.createrepo
 popd
 
 pushd publisher
-	docker build --tag=openmandriva/publisher:${ARCH} --file Dockerfile.publisher .
+    docker build --tag=openmandriva/publisher:${ARCH} --file Dockerfile.publisher .
 popd
 
 #pushd abf-genhdlists
@@ -17,31 +17,31 @@ popd
 #popd
 
 pushd abf-nginx
-	docker build --tag=openmandriva/nginx:${ARCH} --file Dockerfile .
+    docker build --tag=openmandriva/nginx:${ARCH} --file Dockerfile.nginx .
 popd
 
 pushd abf-repoclosure
-	docker build --tag=openmandriva/repoclosure:${ARCH} --file Dockerfile .
+    docker build --tag=openmandriva/repoclosure:${ARCH} --file Dockerfile.repoclosure .
 popd
 
 pushd abf-service
-	docker build --tag=openmandriva/abf:${ARCH} --file Dockerfile .
+    docker build --tag=openmandriva/abf:${ARCH} --file Dockerfile .
 popd
 
 pushd abf-service-sidekiq
-	docker build --tag=openmandriva/abf-service-sidekiq-worker:${ARCH} --file Dockerfile .
+    docker build --tag=openmandriva/abf-service-sidekiq-worker:${ARCH} --file Dockerfile .
 popd
 
 pushd iso-builder
-	docker build --tag=openmandriva/isobuilder:${ARCH} --file Dockerfile.isobuilder .
+    docker build --tag=openmandriva/isobuilder:${ARCH} --file Dockerfile.isobuilder .
 popd
 
 pushd oma-file-store
-	docker build --tag=openmandriva/file-store:${ARCH} --file Dockerfile .
+    docker build --tag=openmandriva/file-store:${ARCH} --file Dockerfile .
 popd
 
 pushd abf-redis
-	docker build --tag=openmandriva/redis:${ARCH} --file Dockerfile .
+    docker build --tag=openmandriva/redis:${ARCH} --file Dockerfile.redis .
 popd
 
 docker push openmandriva/createrepo:${ARCH}
