@@ -169,7 +169,7 @@ class layout(Template):
   </head>
   <body>
     <nav class="navbar navbar-inverse navbar-expand-lg">
-      <a class="navbar-brand mr-2 px-0" href="https://abf.rosalinux.ru">
+      <a class="navbar-brand mr-2 px-0" href="https://abf.openmandriva.org">
         <img src="logo-mini.png" />
       </a>
       <div class="collapse navbar-collapse">
