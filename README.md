@@ -17,7 +17,7 @@ How to activate user account:
 ```bash
 source envfile
 cd rosa-build
-rails c
+bundle exec rails c
 a=User.find_by_email("email")
 a.confirmed_at = Time.now
 a.save
@@ -33,7 +33,7 @@ How to add new arch:
 ```bash
 source envfile
 cd rosa-build
-rails c
+bundle exec rails c
 Arch.create(name: "arch")
 ```
 
@@ -44,7 +44,7 @@ on abfui:
 1. cd /app
 2. source envfile
 3. cd rosa-build
-4. rails console
+4. bundle exec rails c
 5. RepositoryStatus.where.not(status: 0).each do |a| a.ready end
 ```
 How to unlock publishers:
