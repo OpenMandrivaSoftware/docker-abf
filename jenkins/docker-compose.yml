@@ -1,0 +1,20 @@
+version: '2'
+services:
+    huawei-agent:
+        container_name: jenkins-huawei
+        hostname: jenkins-huawei.rosalinux.ru
+        image: rosalab/jenkins:huawei
+        stdin_open: true
+        cpu_shares: 80
+        tty: true
+        restart: unless-stopped
+        privileged: true
+        environment:
+           SECRET: 123qqww
+           JENKINS: http://1.2.3.4:8080/computer/huawei/jenkins-agent.jnlp
+           TOKEN: your_token
+           TG_API_KEY: 1234:LeTters
+           TG_CHAT_ID: -102345678
+        devices:
+           - "/dev/loop-control:/dev/loop-control"
+           - "/dev/loop0:/dev/loop0"
