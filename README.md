@@ -60,3 +60,9 @@ Same like in previous point but:
 ```bash
 BuildList.where(id: [362471, 362473]).destroy_all
 ```
+How to force republish massbuild:
+
+```bash
+1. bundle exec rails c
+2. BuildList.where(mass_build_id: [16, 18]).where(status: BuildList::BUILD_PUBLISHED).find_each do |bl| bl.publish end; true
+```
