@@ -3,7 +3,7 @@ FROM openmandriva/cooker
 RUN dnf --nogpgcheck --refresh --assumeyes --nodocs --setopt=install_weak_deps=False upgrade \
  && dnf --nogpgcheck --assumeyes --nodocs --setopt=install_weak_deps=False install gnupg sudo git which findutils sed curl 'rubygems < 3.0.0' dosfstools squashfs-tools dbus-python procps-ng ncurses distro-release-repos 'dnf-command(config-manager)' \
  && dnf autoremove --assumeyes \
- && dnf --nogpgcheck --assumeyes --nodocs --setopt=install_weak_deps=False install wget \
+ && dnf --nogpgcheck --assumeyes --nodocs --setopt=install_weak_deps=False install wget gawk \
  && dnf clean all \
  && rm -f /etc/localtime \
  && ln -s /usr/share/zoneinfo/UTC /etc/localtime \
