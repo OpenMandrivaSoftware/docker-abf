@@ -3,8 +3,8 @@ FROM openmandriva/cooker
 RUN dnf --nogpgcheck --refresh --assumeyes --nodocs --setopt=install_weak_deps=False upgrade \
  && rm -f /etc/localtime \
  && ln -s /usr/share/zoneinfo/UTC /etc/localtime \
- && dnf --nogpgcheck --assumeyes --nodocs --setopt=install_weak_deps=False install createrepo_c ruby curl \
-        rubygems git dnf-utils gnupg openmandriva-repos-keys docker ruby python-requests rpm-sign python-requests \
+ && dnf --nogpgcheck --assumeyes --nodocs --setopt=install_weak_deps=False install createrepo_c curl \
+        'rubygems < 3.0.0' git dnf-utils gnupg openmandriva-repos-keys docker python-requests rpm-sign python-requests \
  && dnf autoremove --assumeyes \
  && dnf clean all \
  && rm -rf /var/cache/dnf/* \

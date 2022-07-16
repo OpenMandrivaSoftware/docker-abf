@@ -1,7 +1,7 @@
 FROM openmandriva/cooker
 
 RUN dnf --nogpgcheck --refresh --assumeyes --nodocs --setopt=install_weak_deps=False upgrade \
- && dnf --nogpgcheck --assumeyes --nodocs --setopt=install_weak_deps=False install git ruby lib64xslt-devel timezone rubygems postgresql-devel ruby-devel clang glibc-devel make zlib-devel \
+ && dnf --nogpgcheck --assumeyes --nodocs --setopt=install_weak_deps=False install git lib64xslt-devel timezone 'rubygems < 3.0.0' postgresql-devel ruby2-devel clang glibc-devel make zlib-devel \
  && rm -f /etc/localtime \
  && ln -s /usr/share/zoneinfo/UTC /etc/localtime \
  && rm -rf /var/cache/dnf/* \
