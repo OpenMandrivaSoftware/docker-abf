@@ -33,6 +33,7 @@ pushd abf-service-sidekiq
 popd
 
 pushd iso-builder
+    sed -i -e "s,FROM.*,FROM openmandriva/cooker:${ARCH},g" Dockerfile.isobuilder
     docker build --tag=openmandriva/isobuilder:${ARCH} --file Dockerfile.isobuilder .
 popd
 
