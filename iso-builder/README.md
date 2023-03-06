@@ -11,11 +11,11 @@ docker build --tag=openmandriva/isobuilder --file Dockerfile.isobuilder .
 docker rm -v $(docker ps -a -q -f status=exited)
 ```
 
-## Run abf builder
+## Run abf iso builder
 ```bash
-docker run -ti --rm --privileged=true -e BUILD_TOKEN="your_token" \
-	-e QUEUE="iso_worker" \
-	 -e REDIS_HOST="host" -e REDIS_PORT="6379" openmandriva/isobuilder
+docker run -ti --rm --privileged=true -v /var/run/docker.sock:/var/run/docker.sock \
+	-e BUILD_TOKEN="your_token"  -e QUEUE="iso_worker" \
+	-e REDIS_HOST="host" -e REDIS_PORT="6379" openmandriva/isobuilder
 ```
 
 ## Prepare Environment
