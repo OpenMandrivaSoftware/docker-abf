@@ -10,11 +10,9 @@ ENV REDIS_USER=redis \
 
 RUN dnf --nogpgcheck --refresh --assumeyes --nodocs --setopt=install_weak_deps=False upgrade \
  && dnf --nogpgcheck --assumeyes --nodocs --setopt=install_weak_deps=False install redis \
- && sed 's/^bind /# bind /' -i /etc/redis.conf \
  && sed 's/^logfile /# logfile /' -i /etc/redis.conf \
+ && sed 's/^bind /# bind /' -i /etc/redis.conf \
  && sed 's/^protected-mode yes/protected-mode no/' -i /etc/redis.conf \
- && sed 's/^# unixsocket /unixsocket /' -i /etc/redis.conf \
- && sed 's/^# unixsocketperm 700/unixsocketperm 777/' -i /etc/redis.conf \
  && dnf autoremove --assumeyes \
  && dnf clean all \
  && chown redis /usr/bin/redis-server \
@@ -24,6 +22,9 @@ RUN dnf --nogpgcheck --refresh --assumeyes --nodocs --setopt=install_weak_deps=F
  && rm -rf /tmp/* \
  && rm -rf /var/lib/rpm/__db.* \
  && rm -rf /usr/share/man/ /usr/share/cracklib /usr/share/doc
+
+# && sed 's/^# unixsocket /unixsocket /' -i /etc/redis.conf \
+# && sed 's/^# unixsocketperm 700/unixsocketperm 777/' -i /etc/redis.conf \
 
 COPY entrypoint.sh /sbin/entrypoint.sh
 RUN chmod 755 /sbin/entrypoint.sh
