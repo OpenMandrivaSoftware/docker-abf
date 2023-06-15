@@ -27,6 +27,9 @@ run_createrepo() {
         chmod 0755 "${REPOSITORY}"/repodata
         createrepo_c --no-database --workers=10 --general-compress-type=xz --zck --ignore-lock "${REPOSITORY}"
         rc=$?
+        # If createrepo_c crashed (or assert-ed), it probably left unfinished metadata,
+        # which will prevent the next run. Let's clean up.
+        rm -rf "${REPOSITORY}"/.repodata
     else
         printf '%s\n' "Regenerating and updating repodata in ${REPOSITORY}"
         if [ -e "${REPOSITORY}"/.repodata ]; then
@@ -35,6 +38,9 @@ run_createrepo() {
         fi
         createrepo_c --no-database --workers=10 --general-compress-type=xz --zck --update "${REPOSITORY}"
         rc=$?
+        # If createrepo_c crashed (or assert-ed), it probably left unfinished metadata,
+        # which will prevent the next run. Let's clean up.
+        rm -rf "${REPOSITORY}"/.repodata
         if [ "${rc}" != '0' ]; then
             printf '%s\n' "Failed updating repodata in ${REPOSITORY}, trying regeneration from scratch"
             run_createrepo "${REPOSITORY}" "regenerate"
