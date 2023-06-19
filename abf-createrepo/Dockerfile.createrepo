@@ -4,7 +4,7 @@ ENV RARCH aarch64
 RUN dnf --nogpgcheck --refresh --assumeyes --nodocs --setopt=install_weak_deps=False upgrade \
  && rm -f /etc/localtime \
  && ln -s /usr/share/zoneinfo/UTC /etc/localtime \
- && dnf --nogpgcheck --assumeyes --nodocs --setopt=install_weak_deps=False install createrepo_c dnf-utils gnupg openmandriva-repos-keys \
+ && dnf --nogpgcheck --assumeyes --nodocs --setopt=install_weak_deps=False install repodata-tools dnf-utils gnupg openmandriva-repos-keys \
  && dnf autoremove --assumeyes \
  && dnf clean all \
  && rm -rf /var/cache/dnf/* \

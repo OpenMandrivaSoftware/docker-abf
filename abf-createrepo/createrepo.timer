@@ -1,8 +1,0 @@
-[Unit]
-Description=Run createrepo.service every 1 hour
-
-[Timer]
-OnCalendar=*:0/55
-
-[Install]
-WantedBy=timers.target

@@ -7,118 +7,56 @@
 # from scratch.
 
 run_createrepo() {
-    REPOSITORY="$1"
-    REGENERATE="$2"
+	REPOSITORY="$1"
+	REGENERATE="$2"
 
-    [ ! -d "${REPOSITORY}" ] && printf '%s\n' "Directory ${REPOSITORY} does not exist. Exiting." && exit 1
-    printf '%s\n' "Starting regenerating repodata in ${REPOSITORY}"
+	[ ! -d "${REPOSITORY}" ] && printf '%s\n' "Directory ${REPOSITORY} does not exist. Exiting." && exit 1
+	printf '%s\n' "Starting regenerating repodata in ${REPOSITORY}"
 
-    if [ -e "${REPOSITORY}"/repodata/repomd.xml ]; then
-        OLDSUM=$(sha1sum "${REPOSITORY}/repodata/repomd.xml" |cut -d' ' -f1)
-    else
-        OLDSUM=none
-    fi
+	if [ ! -e "${REPOSITORY}"/repodata ] || [ "$2" = 'regenerate' ]; then
+		# release/updates/testing
+		RELEASETYPE="$(echo ${REPOSITORY} |rev |cut -d/ -f1 |rev)"
+		# main/unsupported/restricted/non-free/...
+		REPOTYPE="$(echo ${REPOSITORY} |rev |cut -d/ -f2 |rev)"
+		# CPU architecture
+		ARCH="$(echo ${REPOSITORY} |rev |cut -d/ -f3 |rev)"
+		# cooker/rolling/5.0/...
+		VERSION="$(echo ${REPOSITORY} |rev |cut -d/ -f5 |rev)"
 
-    if [ ! -e "${REPOSITORY}"/repodata ] || [ "$2" = 'regenerate' ]; then
-        printf '%s\n' "Regenerating repodata from scratch in ${REPOSITORY}"
-        rm -rf "${REPOSITORY}"/.repodata
-        mkdir -p "${REPOSITORY}"/repodata
-        chown root:root "${REPOSITORY}"/repodata
-        chmod 0755 "${REPOSITORY}"/repodata
-        createrepo_c --no-database --workers=10 --general-compress-type=xz --zck --ignore-lock "${REPOSITORY}"
-        rc=$?
-        # If createrepo_c crashed (or assert-ed), it probably left unfinished metadata,
-        # which will prevent the next run. Let's clean up.
-        rm -rf "${REPOSITORY}"/.repodata
-    else
-        printf '%s\n' "Regenerating and updating repodata in ${REPOSITORY}"
-        if [ -e "${REPOSITORY}"/.repodata ]; then
-            printf '%s\n' "Previous .repodata exists in ${REPOSITORY}. Removing it."
-            rm -rf "${REPOSITORY}"/.repodata
-        fi
-        createrepo_c --no-database --workers=10 --general-compress-type=xz --zck --update "${REPOSITORY}"
-        rc=$?
-        # If createrepo_c crashed (or assert-ed), it probably left unfinished metadata,
-        # which will prevent the next run. Let's clean up.
-        rm -rf "${REPOSITORY}"/.repodata
-        if [ "${rc}" != '0' ]; then
-            printf '%s\n' "Failed updating repodata in ${REPOSITORY}, trying again with more verbose logs"
-            # Let's try again with some more debug output, we need to figure out why
-            # createrepo_c crashes at times...
-            createrepo_c --no-database --workers=10 --general-compress-type=xz --zck --verbose --update "${REPOSITORY}"
-	    rc=$?
-        fi
-        if [ "${rc}" != '0' ]; then
-            printf '%s\n' "Failed updating repodata in ${REPOSITORY}, trying regeneration from scratch"
-            run_createrepo "${REPOSITORY}" "regenerate"
-            return
-        fi
-    fi
+		printf '%s\n' "Regenerating repodata from scratch in ${REPOSITORY}"
+		createmd -o openmandriva-${VERSION}-${ARCH}-${REPOTYPE}-${RELEASETYPE} "${REPOSITORY}"
+		rc=$?
+	else
+		printf '%s\n' "Regenerating and updating repodata in ${REPOSITORY}"
+		createmd -u "${REPOSITORY}"
+		rc=$?
+		if [ "${rc}" != '0' ]; then
+			printf '%s\n' "Failed updating repodata in ${REPOSITORY}, trying regeneration from scratch"
+			run_createrepo "${REPOSITORY}" "regenerate"
+			return
+		fi
+	fi
 
-# Create AppStream repo data
-    APPSTREAM="${REPOSITORY}"/appstream-md
-    if ! [ -e "${APPSTREAM}"/appstream.xml.gz ]; then
-        printf '%s\n' "No Appstream metadata found in ${APPSTREAM}"
-    else
-        printf '%s\n' "Merging appstream data from ${APPSTREAM}"
-        rm -f "${REPOSITORY}"/repodata/*appstream* ||:
-        if [ ! -e "${APPSTREAM}" ] || [ "$2" = 'regenerate' ]; then
-            chown root:root "${APPSTREAM}"
-            chmod 0755 "${APPSTREAM}"
-        fi
-        modifyrepo_c --compress --compress-type=gz "${APPSTREAM}"/appstream.xml.gz "${REPOSITORY}"/repodata/
-        modifyrepo_c --compress --compress-type=gz "${APPSTREAM}"/appstream-icons.tar.gz "${REPOSITORY}"/repodata/
-    fi
-
-    if [ -e "${REPOSITORY}"/repodata/repomd.xml ]; then
-        NEWSUM=$(sha1sum "${REPOSITORY}/repodata/repomd.xml" |cut -d' ' -f1)
-    else
-        NEWSUM=none
-    fi
-    if [ "$OLDSUM" = "$NEWSUM" ]; then
-        if [ "$NEWSUM" = "none" ]; then
-            printf '%s\n' "repodata doesn't seem to exist, this shouldn't happen"
-        else
-            printf '%s\n' "createrepo claimed to be successful, but apparently didn't do anything - retrying"
-            run_createrepo "${REPOSITORY}" "regenerate"
-            return
-        fi
-    else
-        printf 'repomd.xml sha1sum changed from %s to %s\n' "$OLDSUM" "$NEWSUM"
-    fi
-
-    if [ "${rc}" != '0' ]; then
-        printf '%s\n' "Failed regenerating repodata in ${REPOSITORY}"
-    else
-        printf '%s\n' "Finished regenerating repodata in ${REPOSITORY}"
-    fi
-
-    if [ -e "${REPOSITORY}"/repodata ]; then
-        [ "$(stat -c "%U" "${REPOSITORY}"/repodata )" != 'root' ] && chown root:root "${REPOSITORY}"/repodata
-        [ "$(stat -c "%a" "${REPOSITORY}"/repodata )" != '755' ] && chmod 0755 "${REPOSITORY}"/repodata
-    fi
-    if [ -e "${APPSTREAM}" ]; then
-        [ "$(stat -c "%U" "${APPSTREAM}" )" != 'root' ] && chown root:root "${APPSTREAM}"/repodata
-        [ "$(stat -c "%a" "${APPSTREAM}" )" != '755' ] && chmod 0755 "${APPSTREAM}"
-    fi
-
+	if [ "${rc}" != '0' ]; then
+		printf '%s\n' "Failed regenerating repodata in ${REPOSITORY}"
+	else
+		printf '%s\n' "Finished regenerating repodata in ${REPOSITORY}"
+	fi
 }
 
 if [ -n "$1" ]; then
-    run_createrepo "$1" "$2"
+	run_createrepo "$1" "$2"
 else
+	REPOSITORY="/share/platforms/cooker/repository"
+	[ ! -d "${REPOSITORY}" ] && printf '%s\n' "Directory ${REPOSITORY} does not exist. Exiting." && exit 1
 
-    REPOSITORY="/share/platforms/cooker/repository"
-    [ ! -d "${REPOSITORY}" ] && printf '%s\n' "Directory ${REPOSITORY} does not exist. Exiting." && exit 1
-
-    for i in i686 x86_64 aarch64 riscv64 armv7hnl znver1 SRPMS; do
-        for j in main unsupported non-free restricted debug_main debug_unsupported debug_non-free debug_restricted; do
-            for k in release updates testing; do
-                run_createrepo "${REPOSITORY}/${i}/${j}/${k}"
-            done
-        done
-    done
-
+	for i in i686 x86_64 aarch64 riscv64 armv7hnl znver1 SRPMS; do
+		for j in main unsupported non-free restricted debug_main debug_unsupported debug_non-free debug_restricted; do
+			for k in release updates testing; do
+				run_createrepo "${REPOSITORY}/${i}/${j}/${k}"
+			done
+		done
+	done
 fi
 
 exit 0

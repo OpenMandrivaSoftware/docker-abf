@@ -1,6 +1,0 @@
-[Unit]
-Description=createrepo for dnf
-
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/docker run -d -v /home/abf-downloads:/share/platforms openmandriva/createrepo
