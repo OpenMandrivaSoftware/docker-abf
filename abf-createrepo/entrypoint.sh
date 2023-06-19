@@ -42,6 +42,13 @@ run_createrepo() {
         # which will prevent the next run. Let's clean up.
         rm -rf "${REPOSITORY}"/.repodata
         if [ "${rc}" != '0' ]; then
+            printf '%s\n' "Failed updating repodata in ${REPOSITORY}, trying again with more verbose logs"
+            # Let's try again with some more debug output, we need to figure out why
+            # createrepo_c crashes at times...
+            createrepo_c --no-database --workers=10 --general-compress-type=xz --zck --verbose --update "${REPOSITORY}"
+	    rc=$?
+        fi
+        if [ "${rc}" != '0' ]; then
             printf '%s\n' "Failed updating repodata in ${REPOSITORY}, trying regeneration from scratch"
             run_createrepo "${REPOSITORY}" "regenerate"
             return
