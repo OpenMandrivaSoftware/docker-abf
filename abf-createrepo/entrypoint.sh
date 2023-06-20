@@ -10,6 +10,9 @@ run_createrepo() {
 	REPOSITORY="$1"
 	REGENERATE="$2"
 
+	# Skip trailing slashes so they don't mess with the origin
+	echo "${REPOSITORY}" |grep -q '/$' && REPOSITORY=$(echo ${REPOSITORY} |rev |cut -b2- |rev)
+
 	[ ! -d "${REPOSITORY}" ] && printf '%s\n' "Directory ${REPOSITORY} does not exist. Exiting." && exit 1
 	printf '%s\n' "Starting regenerating repodata in ${REPOSITORY}"
 
