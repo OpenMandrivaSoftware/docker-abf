@@ -16,29 +16,23 @@ run_createrepo() {
 	[ ! -d "${REPOSITORY}" ] && printf '%s\n' "Directory ${REPOSITORY} does not exist. Exiting." && exit 1
 	printf '%s\n' "Starting regenerating repodata in ${REPOSITORY}"
 
-	if [ ! -e "${REPOSITORY}"/repodata ] || [ "$2" = 'regenerate' ]; then
-		# release/updates/testing
-		RELEASETYPE="$(echo ${REPOSITORY} |rev |cut -d/ -f1 |rev)"
-		# main/unsupported/restricted/non-free/...
-		REPOTYPE="$(echo ${REPOSITORY} |rev |cut -d/ -f2 |rev)"
-		# CPU architecture
-		ARCH="$(echo ${REPOSITORY} |rev |cut -d/ -f3 |rev)"
-		# cooker/rolling/5.0/...
-		VERSION="$(echo ${REPOSITORY} |rev |cut -d/ -f5 |rev)"
-
-		printf '%s\n' "Regenerating repodata from scratch in ${REPOSITORY}"
-		createmd -o openmandriva-${VERSION}-${ARCH}-${REPOTYPE}-${RELEASETYPE} "${REPOSITORY}"
-		rc=$?
-	else
-		printf '%s\n' "Regenerating and updating repodata in ${REPOSITORY}"
-		createmd -u "${REPOSITORY}"
-		rc=$?
-		if [ "${rc}" != '0' ]; then
-			printf '%s\n' "Failed updating repodata in ${REPOSITORY}, trying regeneration from scratch"
-			run_createrepo "${REPOSITORY}" "regenerate"
-			return
-		fi
+	if [ "$2" = 'regenerate' ]; then
+		printf '%s\n' "Deleting old repodata in ${REPOSITORY}"
+		rm -rf "${REPOSITORY}"/repodata
 	fi
+
+	# release/updates/testing
+	RELEASETYPE="$(echo ${REPOSITORY} |rev |cut -d/ -f1 |rev)"
+	# main/unsupported/restricted/non-free/...
+	REPOTYPE="$(echo ${REPOSITORY} |rev |cut -d/ -f2 |rev)"
+	# CPU architecture
+	ARCH="$(echo ${REPOSITORY} |rev |cut -d/ -f3 |rev)"
+	# cooker/rolling/5.0/...
+	VERSION="$(echo ${REPOSITORY} |rev |cut -d/ -f5 |rev)"
+
+	printf '%s\n' "Regenerating repodata in ${REPOSITORY}"
+	createmd -o openmandriva-${VERSION}-${ARCH}-${REPOTYPE}-${RELEASETYPE} "${REPOSITORY}"
+	rc=$?
 
 	if [ "${rc}" != '0' ]; then
 		printf '%s\n' "Failed regenerating repodata in ${REPOSITORY}"
