@@ -23,7 +23,7 @@ prepare_and_run() {
     export PATH="${PATH}:$HOME/bin"
 # skip $ARCH before we build hiredis gem
     unset ARCH
-    sudo gem install bundler
+    sudo gem install bundler:2.4.22
     [ $? != '0' ] && errorCatch
     sudo bundle install
     [ $? != '0' ] && errorCatch
