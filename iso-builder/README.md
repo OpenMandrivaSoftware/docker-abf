@@ -3,7 +3,14 @@
 Create builder image:
 
 ```bash
-docker build --tag=openmandriva/isobuilder --file Dockerfile.isobuilder .
+docker build --tag=openmandriva/isobuilder:$(uname -m) --file Dockerfile.isobuilder .
+docker manifest rm openmandriva/isobuilder:latest || :
+docker manifest create openmandriva/isobuilder:latest \
+    openmandriva/isobuilder:x86_64 \
+    openmandriva/isobuilder:aarch64
+docker manifest annotate openmandriva/isobuilder:latest openmandriva/isobuilder:x86_64 --os linux --arch amd64
+docker manifest annotate openmandriva/isobuilder:latest openmandriva/isobuilder:aarch64 --os linux --arch arm64
+docker manifest push openmandriva/isobuilder:latest
 ```
 
 ## Remove stopped containers
