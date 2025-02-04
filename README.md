@@ -19,6 +19,8 @@ source envfile
 cd rosa-build
 bundle exec rails c
 a=User.find_by_email("email")
+or by name
+User.find_by(uname: 'studebakerguy').confirm
 a.confirmed_at = Time.now
 a.save
 ```
