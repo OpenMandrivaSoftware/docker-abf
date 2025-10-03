@@ -9,7 +9,7 @@ RUN dnf --nogpgcheck --refresh --assumeyes --nodocs --setopt=install_weak_deps=F
  && ln -s /usr/share/zoneinfo/UTC /etc/localtime \
  && echo "%omv ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers \
  && echo "Defaults:omv !requiretty"  >> /etc/sudoers \
- && adduser omv \
+ && (adduser omv || :) \
  && rm -rf /var/cache/dnf/* \
  && rm -rf /var/lib/dnf/* \
  && rm -rf /tmp/* \
@@ -17,7 +17,7 @@ RUN dnf --nogpgcheck --refresh --assumeyes --nodocs --setopt=install_weak_deps=F
  && rm -rf /usr/share/man/ /usr/share/cracklib /usr/share/doc
 
 USER omv
-ENV HOME /home/omv
+ENV HOME=/home/omv
 
 COPY entrypoint.sh /sbin/entrypoint.sh
 ENTRYPOINT ["/sbin/entrypoint.sh"]
