@@ -1,61 +1,43 @@
 ARCH=$(uname -m)
 
-pushd abf-createrepo/
-    if [ "$ARCH" != "x86_64" ]; then
-	sed -i -e '/ENV RARCH x86_64/d' Dockerfile.createrepo
-    fi
-    docker build --tag=openmandriva/createrepo:${ARCH} --file Dockerfile.createrepo .
-    git checkout Dockerfile.createrepo
-popd
+if [ "$#" = "0" ]; then
+	CONTAINERS="createrepo publisher nginx repoclosure abf abf-service-sidekiq-worker isobuilder file-store redis"
+else
+	CONTAINERS="$@"
+fi
 
-pushd publisher
-    docker build --tag=openmandriva/publisher:${ARCH} --file Dockerfile.publisher .
-popd
+for CONTAINER in $CONTAINERS; do
+	case $CONTAINER in
+	abf)
+		SUBDIR="abf-service"
+		;;
+	abf-service-sidekiq-worker)
+		SUBDIR="abf-service-sidekiq"
+		;;
+	isobuilder)
+		SUBDIR="iso-builder"
+		;;
+	file-store)
+		SUBDIR="oma-file-store"
+		;;
+	*)
+		SUBDIR="abf-$CONTAINER"
+		;;
+	esac
 
-#pushd abf-genhdlists
-#	docker build --tag=openmandriva/genhdlists2:${ARCH} --file Dockerfile.genhdlists2 .
-#popd
-
-pushd abf-nginx
-    docker build --tag=openmandriva/nginx:${ARCH} --file Dockerfile.nginx .
-popd
-
-pushd abf-repoclosure
-    docker build --tag=openmandriva/repoclosure:${ARCH} --file Dockerfile.repoclosure .
-popd
-
-pushd abf-service
-    docker build --tag=openmandriva/abf:${ARCH} --file Dockerfile .
-popd
-
-pushd abf-service-sidekiq
-    docker build --tag=openmandriva/abf-service-sidekiq-worker:${ARCH} --file Dockerfile .
-popd
-
-pushd iso-builder
-    docker build --tag=openmandriva/isobuilder:${ARCH} --file Dockerfile.isobuilder .
-popd
-
-pushd oma-file-store
-    docker build --tag=openmandriva/file-store:${ARCH} --file Dockerfile .
-popd
-
-pushd abf-redis
-    docker build --tag=openmandriva/redis:${ARCH} --file Dockerfile.redis .
-popd
-
-docker push openmandriva/createrepo:${ARCH}
-docker push openmandriva/publisher:${ARCH}
-#docker push openmandriva/genhdlists2:${ARCH}
-docker push openmandriva/nginx:${ARCH}
-docker push openmandriva/repoclosure:${ARCH}
-docker push openmandriva/abf:${ARCH}
-docker push openmandriva/abf-service-sidekiq-worker:${ARCH}
-docker push openmandriva/isobuilder:${ARCH}
-docker push openmandriva/file-store:${ARCH}
-docker push openmandriva/redis:${ARCH}
-
-for i in createrepo publisher nginx repoclosure abf abf-service-sidekiq-worker isobuilder file-store redis; do
+	pushd $SUBDIR/
+		if [ "$CONTAINER" = "createrepo" ]; then
+			if [ "$ARCH" != "x86_64" ]; then
+				sed -i -e '/ENV RARCH x86_64/d' Dockerfile.createrepo
+			fi
+		fi
+		if [ -e Dockerfile.${CONTAINER} ]; then
+			docker build --tag=openmandriva/${CONTAINER}:${ARCH} --file Dockerfile.${CONTAINER} .
+		else
+			docker build --tag=openmandriva/${CONTAINER}:${ARCH} --file Dockerfile .
+		fi
+		docker push openmandriva/${CONTAINER}:${ARCH}
+	popd
 	docker manifest create openmandriva/$i:latest \
 		--amend openmandriva/$i:x86_64 \
 		--amend openmandriva/$i:aarch64
